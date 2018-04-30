@@ -1,0 +1,32 @@
+<div id="pai" class="container border rounded border-primary" align="center">
+
+  <h1 style="margin-top: 30px; color: white; text-shadow: 4px 4px black;">{{Title}}</h1>
+
+      <form [formGroup]="LoginForm" (ngSubmit)="save();" id="login" role="form" >
+
+        <div id="inner" class="form-group">
+
+          <label for="exampleInputEmail1" style="margin-top: 20px;">
+            Login
+          </label>
+
+          <input formControlName="email" type="email" class="input-class" id="exampleInputEmail1" placeholder="Digite o seu e-mail" required>
+          <input formControlName="senha" type="password" class="input-class" id="senha" placeholder="Digite sua senha" required>
+
+          <button id="avancar" type="submit" class="btn btn-success" style="font-weight: bold;">
+            Avançar
+          </button>
+
+          <p>Não é cadastrado? </p>
+
+          <button id="cadastrar" type="button" class="btn btn-primary" style="font-weight: bold;">
+            Cadastre-se
+          </button>
+
+        </div>
+      </form>
+
+      <div class="container" align="center">
+          <p style="color: white; font-weight: bolder; margin-top: 260px;">Todos os direitos reservados</p>
+        </div>
+</div>
