@@ -13,7 +13,7 @@ import { TypeServiceService } from '../services/type-service.service';
   imports: [
     CommonModule,
     RouterModule.forChild([
-       {path: 'Home', component: HomeComponent  }
+       {path: 'home', component: HomeComponent  }
     ])
   ],
   declarations: [HomeComponent],

@@ -9,16 +9,19 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class LoginService {
 private api = 'http://localhost:6336/api/Login/';
-
-  constructor(private _http: HttpClient) { }
+  headers: HttpHeaders;
+  constructor(private _http: HttpClient) {
+    let _headers = new HttpHeaders();
+    this.headers = _headers.append('Content-Type', 'application/json');
+   }
 
   Login(data: string): Observable<any> {
-    const _headers = new HttpHeaders();
-    const headers = _headers.append('Content-Type', 'application/json');
-  return  this._http.post<any>(this.api, data, {headers})
+    
+  return  this._http.post<any>(this.api, data, {headers: this.headers})
   .map( user => {
     if (user) {
         localStorage.setItem('currentUser', JSON.stringify(user));
+        console.log(localStorage.getItem('currentUser'));
     }
     return user;
    })

@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { LoginService } from '../../services/login.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService } from '../../services/alert.service';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -14,14 +15,15 @@ export class LoginComponent implements OnInit  {
   Title = 'Manutentor';
   LoginForm: FormGroup;
   loading = false;
-  returnUrl = '[/Home]';
+  returnUrl: string ='/';
 
   constructor(
     private fb: FormBuilder,
     private service: LoginService,
     private alertService: AlertService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
@@ -39,14 +41,13 @@ export class LoginComponent implements OnInit  {
      this.service.Login(data)
      .subscribe(
        resp => {
-                    // this.router.navigate([this.returnUrl]);;
-                    this.router.navigate([this.returnUrl]);
+                    this.returnUrl = '/home';
                 },
                 error => {
                     this.alertService.error(error);
                     this.loading = false;
                 });
-
+              this.router.navigateByUrl(this.returnUrl);
     }
 
 LogOut(): void {
