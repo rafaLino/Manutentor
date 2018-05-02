@@ -1,0 +1,65 @@
+<div id="pai" class="container-fluid border rounded border-primary" align="center">
+
+  <h1 style="margin-top: 30px; color: white; text-shadow: 4px 4px black;">Manutentor</h1>
+
+      <div id="caixa" class="container" align="center">
+        <div id="caixafilho" class="col-sm-8 col-md-8" align="center">
+          <p style="font-size: 16px; margin-top: 20px;">O que podemos consertar para você?</p>
+
+        <div class="row">
+          <div class="form-group col-offset-2 col-sm col-md-4">
+            <select class="form-control">
+              <option *ngFor='let type of typeServices'
+              [value]='type.Id'>{{type.Description}}</option>
+
+            </select>
+          </div>
+        </div>
+
+          <div class="form-group col-sm-8 col-md-8">
+            <label for="comment" style="font-size: 14px; ">Descreva seu problema</label>
+            <textarea id="descricao" class="form-control" rows="3"></textarea>
+          </div>
+
+          <div class="row col-md-8">
+            <div class="col-md-4">
+              <button type="button" class="btn btn-primary btn-sm">Insira uma foto (Opcional)</button>
+            </div>
+
+
+            <div class="col-md-4 offset-md-4">
+                <button type="button" class="btn btn-success btn-sm">Enviar Pedido</button>
+            </div>
+          </div>
+
+
+
+
+          <div class="row table-responsive col-sm-8" style=" font-size: 14px; margin-top: 100px;">
+           <table class="table table-bordered table-hover" style="background: white; color: black;">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">First</th>
+                  <th scope="col">Last</th>
+                  <th scope="col">Handle</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor='let fitter of fitterList; let i=index'>
+                  <td>{{i}}</td>
+                  <td>{{fitter.Availability}}</td>
+                  <td>{{fitter.Name}}</td>
+                  <td>{{fitter.AverageRating}}</td>
+                  </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+<div class="container" align="center">
+  <p style="color: white; font-weight: bolder; margin-top: 350px;">Todos os direitos reservados</p>
+</div>
+
+
+</div>

@@ -1,0 +1,33 @@
+<div id="pai" class="container border rounded border-primary" align="center">
+
+  <h1 style="margin-top: 30px; color: white; text-shadow: 4px 4px black;">{{Title}}</h1>
+
+      <form [formGroup]="LoginForm" (ngSubmit)="Login();" id="login" role="form" >
+
+        <div id="inner" class="form-group">
+
+          <label for="exampleInputEmail1" style="margin-top: 20px;">
+            Login
+          </label>
+
+          <input formControlName="Email" type="email" class="input-class" id="exampleInputEmail1" placeholder="Digite o seu e-mail" required>
+          <input formControlName="Password" type="password" class="input-class" id="senha" placeholder="Digite sua senha" required>
+
+          <button id="avancar" type="submit" class="btn btn-success" style="font-weight: bold;">
+            Avançar
+            <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+          </button>
+
+          <p>Não é cadastrado? </p>
+
+          <button id="cadastrar" type="button" class="btn btn-primary" style="font-weight: bold;">
+            Cadastre-se
+          </button>
+
+        </div>
+      </form>
+
+      <div class="container" align="center">
+          <p style="color: white; font-weight: bolder; margin-top: 260px;">Todos os direitos reservados</p>
+        </div>
+</div>
