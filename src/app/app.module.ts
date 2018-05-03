@@ -9,8 +9,12 @@ import { AlertService } from './services/alert.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from './services/login.service';
 import { NotfoudComponent } from './components/notfoud/notfoud.component';
-import { HomeComponent } from './components/home/home.component';
+
 import { AuthguardService } from './guard/authguard.service';
+import { LoginManutentorComponent } from './components/login/login-manutentor/login-manutentor.component';
+import { FitterModule } from './modules/fitter.module';
+import { ClientModule } from './modules/client.module';
+
 
 
 
@@ -20,23 +24,27 @@ import { AuthguardService } from './guard/authguard.service';
     AppComponent,
     AlertComponent,
     LoginComponent,
-    NotfoudComponent,
-    HomeComponent
+    LoginManutentorComponent,
+    NotfoudComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot([
+    RouterModule.forRoot([            
+      {path: 'loginManutentor', component: LoginManutentorComponent },
       {path: 'login', component: LoginComponent },
       {path: '', redirectTo: 'login', pathMatch: 'full'},
       {path: '**', redirectTo: 'notfound', pathMatch: 'full'}
     ]),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ClientModule,
+    FitterModule
   ],
   providers: [
     AlertService,
     LoginService,
     AuthguardService
+
   ],
   bootstrap: [AppComponent]
 })

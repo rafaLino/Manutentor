@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/Observable/throw';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
@@ -12,34 +12,37 @@ import { Iclient } from '../entities/client';
 export class ClientService {
 
   private api = 'http://localhost:6336/api/Client/';
-
-constructor(private _http: HttpClient) { }
+  private headers: HttpHeaders;
+constructor(private _http: HttpClient) {
+  let _headers = new HttpHeaders();
+    this.headers = _headers.append('Content-Type', 'application/json');
+ }
 
 
 getList(): Observable<Iclient[]> {
-  return this._http.get<Iclient[]>(this.api)
+  return this._http.get<Iclient[]>(this.api,{headers: this.headers})
   .catch(this.handleError);
 }
 
 get(id: number): Observable<Iclient> {
-  return this._http.get<Iclient>(`${this.api}/${id}`)
+  return this._http.get<Iclient>(`${this.api}/${id}`,{headers: this.headers})
   .catch(this.handleError);
 
 }
 
 post(client): Observable<Iclient> {
-    return this._http.post(this.api, client)
+    return this._http.post(this.api, client,{headers: this.headers})
     .catch(this.handleError);
 
 }
 
 put(id: number, client): Observable<Iclient> {
-  return this._http.put(`${this.api}/${id}`, client)
+  return this._http.put(`${this.api}/${id}`, client,{headers: this.headers})
   .catch(this.handleError);
 }
 
 delete(id: number) {
- this._http.delete(`${this.api}/${id}`)
+ this._http.delete(`${this.api}/${id}`,{headers: this.headers})
  .catch(this.handleError);
 }
 

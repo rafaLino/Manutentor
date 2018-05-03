@@ -14,7 +14,7 @@ import { Iclient } from '../../../entities/client';
 export class HomeComponent implements OnInit {
  typeServices: IserviceType[];
  fitterList: Ifitter[];
- currentUser: Iclient;
+ currentUser: Iclient; 
 
   constructor(
     private svcFitter: FitterService,
@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.svcTypeService.getList()
     .subscribe( types => {
-     this.typeServices = types;
+     this.typeServices = types;     
     });
 
     this.svcFitter.getList()

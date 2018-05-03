@@ -1,17 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { LoginService } from '../../services/login.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { AlertService } from '../../services/alert.service';
+import { LoginService } from '../../../services/login.service';
+import { AlertService } from '../../../services/alert.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
-
 @Component({
-  moduleId: module.id,
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  templateUrl: './login-manutentor.component.html',
+  styleUrls: ['./login-manutentor.component.css']
 })
-export class LoginComponent implements OnInit  {
+export class LoginManutentorComponent implements OnInit {
   Title = 'Manutentor';
   LoginForm: FormGroup;
   loading = false;
@@ -38,10 +36,10 @@ export class LoginComponent implements OnInit  {
 
   Login(): void {
     const data: string = JSON.stringify(this.LoginForm.value);
-     this.service.LoginClient(data)
+     this.service.LoginFitter(data)
      .subscribe(
        resp => {
-            this.router.navigate(['home']); 
+            this.router.navigate(['fitter']); 
                 },
                 error => {
                     this.alertService.error(error);
@@ -55,5 +53,7 @@ LogOut(): void {
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 }
 
-
+back(){
+  this.router.navigate(['login']);
+}
 }

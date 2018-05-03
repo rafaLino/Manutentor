@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpErrorResponse, HttpClient } from '@angular/common/http';
+import { HttpErrorResponse, HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { IserviceType } from '../entities/iservice-type';
 
@@ -7,30 +7,33 @@ import { IserviceType } from '../entities/iservice-type';
 export class TypeServiceService {
 
   private api = 'http://localhost:6336/api/ServiceType/';
-
-  constructor(private _http: HttpClient) { }
+  private headers:HttpHeaders;
+  constructor(private _http: HttpClient) {
+    let _headers = new HttpHeaders();
+    this.headers = _headers.append('Content-Type', 'application/json');
+   }
 
   getList(): Observable<IserviceType[]> {
-    return this._http.get(this.api)
+    return this._http.get(this.api,{headers: this.headers})
     .catch(this.handleError);
     }
 
     get(id: number): Observable<IserviceType> {
-      return this._http.get(`${this.api}/${id}`)
+      return this._http.get(`${this.api}/${id}`,{headers: this.headers})
       .catch(this.handleError);
     }
 
     delete(id: number) {
-      this._http.delete(`${this.api}/${id}`)
+      this._http.delete(`${this.api}/${id}`,{headers: this.headers})
       .catch(this.handleError);
     }
 
     post(type): Observable<IserviceType> {
-      return this._http.post(this.api, type)
+      return this._http.post(this.api, type,{headers: this.headers})
       .catch(this.handleError);
     }
 put(id: number, type): Observable<IserviceType> {
-  return this._http.put(`${this.api}/${id}}`, type)
+  return this._http.put(`${this.api}/${id}}`, type,{headers: this.headers})
   .catch(this.handleError);
 
 }

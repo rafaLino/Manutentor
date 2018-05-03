@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Ioffer } from '../entities/offer';
 
@@ -7,31 +7,35 @@ import { Ioffer } from '../entities/offer';
 export class OfferService {
 
   private api = 'http://localhost:6336/api/Offer/';
-  constructor(private _http: HttpClient) { }
+  private headers: HttpHeaders;
+  constructor(private _http: HttpClient) {
+    let _headers = new HttpHeaders();
+    this.headers = _headers.append('Content-Type', 'application/json');
+   }
 
 
   getList(): Observable<Ioffer[]> {
-    return this._http.get<Ioffer[]>(this.api)
+    return this._http.get<Ioffer[]>(this.api,{headers: this.headers})
     .catch(this.handleError);
   }
 
   get(id: number): Observable<Ioffer> {
-    return this._http.get<Ioffer>(`${this.api}/${id}`)
+    return this._http.get<Ioffer>(`${this.api}/${id}`,{headers: this.headers})
     .catch(this.handleError);
   }
 
   delete(id: number) {
-    this._http.delete(`${this.api}/${id}`)
+    this._http.delete(`${this.api}/${id}`,{headers: this.headers})
     .catch(this.handleError);
   }
 
   post(offer): Observable<Ioffer> {
-    return this._http.post(this.api , offer)
+    return this._http.post(this.api , offer,{headers: this.headers})
     .catch(this.handleError);
   }
 
   put(id: number, offer): Observable<Ioffer> {
-    return this._http.put(`${this.api}/${id}`, offer)
+    return this._http.put(`${this.api}/${id}`, offer,{headers: this.headers})
     .catch(this.handleError);
   }
 

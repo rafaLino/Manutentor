@@ -5,23 +5,24 @@ import 'rxjs/add/Observable/throw';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
+import { Iclient } from '../entities/client';
+import { Ifitter } from '../entities/fitter';
 
 @Injectable()
 export class LoginService {
 private api = 'http://localhost:6336/api/Login/';
-  headers: HttpHeaders;
+private headers: HttpHeaders;
   constructor(private _http: HttpClient) {
     let _headers = new HttpHeaders();
     this.headers = _headers.append('Content-Type', 'application/json');
    }
 
-  Login(data: string): Observable<any> {
+  LoginClient(data: string): Observable<Iclient> {
     
-  return  this._http.post<any>(this.api, data, {headers: this.headers})
+  return  this._http.post<Iclient>(this.api, data, {headers: this.headers})
   .map( user => {
     if (user) {
         localStorage.setItem('currentUser', JSON.stringify(user));
-        console.log(localStorage.getItem('currentUser'));
     }
     return user;
    })
@@ -29,6 +30,21 @@ private api = 'http://localhost:6336/api/Login/';
 
 
   }
+
+  LoginFitter(data: string): Observable<Ifitter> {
+    
+    return  this._http.post<Ifitter>(`${this.api}/fitter`, data, {headers: this.headers})
+    .map( user => {
+      if (user) {
+          localStorage.setItem('currentUser', JSON.stringify(user));
+          console.log(localStorage.getItem('currentUser'));
+      }
+      return user;
+     })
+     .catch(this.handleError);
+  
+  
+    }
 
   LogOut(): void {
     localStorage.removeItem('currentUser');
