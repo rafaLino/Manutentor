@@ -11,7 +11,10 @@ a.link {
 	font-size: 12px;
 	margin: auto 0;
 }
-
+div.block {
+	width: 60px;
+	height: 30px;
+}
 #login{
 	margin-top: 180px;
 	margin-bottom: 100px;

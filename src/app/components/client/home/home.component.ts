@@ -5,6 +5,8 @@ import { FitterService } from '../../../services/fitter.service';
 import { ClientService } from '../../../services/client.service';
 import { TypeServiceService } from '../../../services/type-service.service';
 import { Iclient } from '../../../entities/client';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -13,26 +15,37 @@ import { Iclient } from '../../../entities/client';
 })
 export class HomeComponent implements OnInit {
  typeServices: IserviceType[];
- fitterList: Ifitter[];
  currentUser: Iclient; 
+ offerForm: FormGroup;
 
   constructor(
-    private svcFitter: FitterService,
-    private svcClient: ClientService,
-    private svcTypeService: TypeServiceService
+    private svcTypeService: TypeServiceService,
+    private fb: FormBuilder,
+    private route: Router,
+    private activeRoute: ActivatedRoute,
+
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    console.log(this.currentUser);
   }
 
   ngOnInit() {
+
+    this.offerForm = this.fb.group({
+      ClientId: this.currentUser.id,
+      ServiceTypeId: '',
+      Description: ''
+    });
+
     this.svcTypeService.getList()
     .subscribe( types => {
      this.typeServices = types;     
     });
+  }
 
-    this.svcFitter.getList()
-    .subscribe(fitters => {
-      this.fitterList = fitters;
-    });
+
+  Send(): void{
+    console.log(this.offerForm.value);
+
   }
 }

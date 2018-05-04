@@ -1,22 +1,22 @@
 export interface Ifitter {
-  Id: number;
-  CPF: string;
-  Name: string;
-  Genre: string;
-  CellPhone: string;
-  BirthDate: Date;
+  id: number;
+  cpf: string;
+  name: string;
+  genre: string;
+  cellPhone: string;
+  birthDate: Date;
 
-  Email: string;
-  Password: string;
+  email: string;
+  password: string;
   urlProfilePicture: string;
 
-  Address: string;
-  Number: string;
-  Region: string;
-  City: string;
-  CEP: string;
-  State: string;
-  Ratings: Array<string>;
-  AverageRating: number;
-  Availability: boolean;
+  address: string;
+  number: string;
+  region: string;
+  city: string;
+  cEP: string;
+  state: string;
+  ratings: Array<string>;
+  averageRating: number;
+  availability: boolean;
 }

@@ -1,10 +1,10 @@
 export interface Ioffer {
-Id: number;
-ClientId: number;
-Fiiter: number;
-ServiceTypeId: number;
-Description: string;
-Images: Array<string>;
+id: number;
+clientId: number;
+fiiter: number;
+serviceTypeId: number;
+description: string;
+images: Array<string>;
 
 }
 

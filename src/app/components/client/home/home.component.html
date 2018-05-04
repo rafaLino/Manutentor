@@ -5,10 +5,10 @@
       <div id="caixa" class="container" align="center">
         <div id="caixafilho" class="col-sm-8 col-md-8" align="center">
           <p style="font-size: 16px; margin-top: 20px;">O que podemos consertar para você?</p>
-
+          <form [formGroup]="offerForm" (ngSubmit)="Send();" >
         <div class="row">
           <div class="form-group col-offset-2 col-sm col-md-4">
-            <select class="form-control">
+            <select formControlName="ServiceTypeId" class="form-control">
               <option *ngFor='let type of typeServices'
               [value]='type.id'>{{type.description}}</option>
 
@@ -17,8 +17,8 @@
         </div>
 
           <div class="form-group col-sm-8 col-md-8">
-            <label for="comment" style="font-size: 14px; ">Descreva seu problema</label>
-            <textarea id="descricao" class="form-control" rows="3"></textarea>
+            <label for="Description" style="font-size: 14px; ">Descreva seu problema</label>
+            <textarea formControlName="Description" id="descricao" class="form-control" rows="3"></textarea>
           </div>
 
           <div class="row col-md-8">
@@ -28,40 +28,11 @@
 
 
             <div class="col-md-4 offset-md-4">
-                <button type="button" class="btn btn-success btn-sm">Enviar Pedido</button>
+                <button type="submit" class="btn btn-success btn-sm">Enviar Pedido</button>
             </div>
           </div>
-
-
-
-          <div class="row table-responsive col-sm-8" style=" font-size: 14px; margin-top: 100px;">
-           <table class="table table-bordered table-hover" style="background: white; color: black;">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Disponível</th>
-                  <th scope="col">Manutentor</th>
-                  <th scope="col">Avaliação</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor='let fitter of fitterList; let i=index'>
-                  <td>{{i}}</td>
-                  <td>
-                    <span *ngIf='fitter.availability; then verdadeiro else falso'></span>
-                    <ng-template #verdadeiro><i class="material-icons" style="color: green">fiber_manual_record</i></ng-template>
-                    <ng-template #falso><i class="material-icons" style="color: red">fiber_manual_record</i></ng-template>
-                  </td>
-                  <td>{{fitter.name}}</td>
-                  <td>
-                    <pm-star [rating]='fitter.averageRating'
-                    (ratingClicked)='onRatingClicked($event)'>
-                  </pm-star>
-                  </td>
-                  </tr>
-              </tbody>
-            </table>
-          </div>
+        </form>
+          <app-tabela-fitter></app-tabela-fitter>
         </div>
       </div>
 <div class="container" align="center">

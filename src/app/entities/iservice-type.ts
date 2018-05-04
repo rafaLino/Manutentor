@@ -1,4 +1,4 @@
 export interface IserviceType {
-  Id: number;
-  Description: string;
+  id: number;
+  description: string;
 }

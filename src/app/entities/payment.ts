@@ -1,6 +1,6 @@
 export interface Ipayment {
-  Id: number;
-  PaymentType: string;
-  Value: number;
-  Description: string;
+  id: number;
+  paymentType: string;
+  value: number;
+  description: string;
 }

@@ -6,6 +6,10 @@ import { ClientService } from '../services/client.service';
 import { FitterService } from '../services/fitter.service';
 import { TypeServiceService } from '../services/type-service.service';
 import { SharedModule } from '../components/shared/shared.module';
+import { TabelaFitterComponent } from '../components/client/tabela-fitter/tabela-fitter.component';
+import { TabelaFitterResolverService } from '../components/client/tabela-fitter/tabela-fitter-resolver.service';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 
@@ -14,15 +18,16 @@ import { SharedModule } from '../components/shared/shared.module';
   imports: [
     CommonModule,
     RouterModule.forChild([
-       {path: 'home', component: HomeComponent  }
+       {path: 'home', component: HomeComponent, resolve: {fitter: TabelaFitterResolverService} },
     ]),
+    ReactiveFormsModule,
     SharedModule
   ],
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, TabelaFitterComponent],
   providers: [
-    ClientService,
     FitterService,
-    TypeServiceService
+    TypeServiceService,
+    TabelaFitterResolverService
   ]
 })
 export class ClientModule { }

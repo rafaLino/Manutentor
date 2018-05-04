@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit  {
 
   Login(): void {
     const data: string = JSON.stringify(this.LoginForm.value);
+    this.loading = true;
      this.service.LoginClient(data)
      .subscribe(
        resp => {

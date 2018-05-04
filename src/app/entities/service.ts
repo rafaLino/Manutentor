@@ -1,19 +1,19 @@
 export interface Iservice {
-Id: number;
-ServiceType: string;
-ApproximateTime: string;
-Status: number;
+id: number;
+serviceType: string;
+approximateTime: string;
+status: number;
 
-OfferId: number;
+offerId: number;
 value: number;
 comments: string;
 
-Address: string;
-Number: string;
-Region: string;
-City: string;
-CEP: string;
-State: string;
+address: string;
+number: string;
+region: string;
+city: string;
+cep: string;
+state: string;
 
 }
 

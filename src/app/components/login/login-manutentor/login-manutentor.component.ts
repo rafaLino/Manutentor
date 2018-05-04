@@ -36,6 +36,7 @@ export class LoginManutentorComponent implements OnInit {
 
   Login(): void {
     const data: string = JSON.stringify(this.LoginForm.value);
+    this.loading = true;
      this.service.LoginFitter(data)
      .subscribe(
        resp => {

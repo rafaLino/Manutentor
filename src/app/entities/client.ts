@@ -1,21 +1,21 @@
 export interface Iclient {
-  Id: number;
-  CPF: string;
-  Name: string;
-  Genre: string;
-  CellPhone: string;
-  BirthDate: Date;
+  id: number;
+  cpf: string;
+  name: string;
+  genre: string;
+  cellPhone: string;
+  birthDate: Date;
 
-  Email: string;
-  Password: string;
+  email: string;
+  password: string;
   urlProfilePicture: string;
 
-  Address: string;
-  Number: string;
-  Region: string;
-  City: string;
-  CEP: string;
-  State: string;
+  address: string;
+  number: string;
+  region: string;
+  city: string;
+  cep: string;
+  state: string;
 
 
 }
