@@ -26,7 +26,6 @@ export class HomeComponent implements OnInit {
 
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    console.log(this.currentUser);
   }
 
   ngOnInit() {
@@ -45,7 +44,7 @@ export class HomeComponent implements OnInit {
 
 
   Send(): void{
-    console.log(this.offerForm.value);
-
+    var servicetype = this.offerForm.get('ServiceTypeId');
+    this.route.navigate(['selecionarmanutentor', servicetype]);
   }
 }

@@ -9,6 +9,8 @@ import { SharedModule } from '../components/shared/shared.module';
 import { TabelaFitterComponent } from '../components/client/tabela-fitter/tabela-fitter.component';
 import { TabelaFitterResolverService } from '../components/client/tabela-fitter/tabela-fitter-resolver.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FitterListComponent } from '../components/client/fiiter-list/fitter-list.component';
+import { FitterResolverService } from '../components/client/fiiter-list/fitter-resolver.service';
 
 
 
@@ -19,15 +21,17 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     RouterModule.forChild([
        {path: 'home', component: HomeComponent, resolve: {fitter: TabelaFitterResolverService} },
+       {path: 'selecionarmanutentor/:servicetype', component: FitterListComponent, resolve:{fitter: FitterResolverService}}
     ]),
     ReactiveFormsModule,
     SharedModule
   ],
-  declarations: [HomeComponent, TabelaFitterComponent],
+  declarations: [HomeComponent, TabelaFitterComponent, FitterListComponent],
   providers: [
     FitterService,
     TypeServiceService,
-    TabelaFitterResolverService
+    TabelaFitterResolverService,
+    FitterResolverService
   ]
 })
 export class ClientModule { }

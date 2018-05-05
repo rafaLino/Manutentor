@@ -39,8 +39,13 @@ delete(id: number) {
   .catch(this.handleError);
 }
 
-getByDisponibilidae(): Observable<Ifitter[]> {
+getByDisponibilidade(): Observable<Ifitter[]> {
   return this._http.get<Ifitter[]>(`${this.api}/disponivel`,{headers: this.headers})
+  .catch(this.handleError);
+}
+
+getByServiceType(id: number): Observable<Ifitter[]> {
+  return this._http.get<Ifitter[]>(`${this.api}/${id}/disponivel`,{headers: this.headers})
   .catch(this.handleError);
 }
 
