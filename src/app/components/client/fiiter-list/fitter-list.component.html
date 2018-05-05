@@ -1,3 +1,37 @@
-<p>
-  fitter-list works!
-</p>
+
+<div  id="pai" class="container-fluid border rounded border-primary" align="center">
+    
+    <h1 style="margin-top: 30px; color: white; text-shadow: 4px 4px black;">Manutentor</h1>
+  
+        <div id="caixa" class="container" align="center">
+            <loading [hidden]="!loading"></loading>
+          <div [hidden]="loading" id="caixafilho" class="col-sm-8 col-md-8" align="center">
+<div class="row table-responsive col-sm-8" style=" font-size: 14px; margin-top: 100px;">
+  <table  class="table table-bordered table-hover" style="background: white; color: black;">
+     <thead>
+       <tr>
+         <th scope="col">Disponível</th>
+         <th scope="col">Manutentor</th>
+         <th scope="col">Avaliação</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr *ngFor='let fitter of fitterList'(click)='seleciona(fitter)'>
+         <td>
+           <span *ngIf='fitter.availability; then verdadeiro else falso'></span>
+           <ng-template #verdadeiro><i class="material-icons" style="color: green">fiber_manual_record</i></ng-template>
+           <ng-template #falso><i class="material-icons" style="color: red">fiber_manual_record</i></ng-template>
+         </td>
+         <td>{{fitter.name}}</td>
+         <td>
+           <pm-star [rating]='fitter.averageRating'
+           (ratingClicked)='onRatingClicked($event)'>
+         </pm-star>
+         </td>
+         </tr>
+     </tbody>
+   </table>
+ </div>
+ </div>
+ </div>
+ </div>

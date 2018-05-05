@@ -10,10 +10,7 @@ import { TabelaFitterComponent } from '../components/client/tabela-fitter/tabela
 import { TabelaFitterResolverService } from '../components/client/tabela-fitter/tabela-fitter-resolver.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FitterListComponent } from '../components/client/fiiter-list/fitter-list.component';
-import { FitterResolverService } from '../components/client/fiiter-list/fitter-resolver.service';
-
-
-
+import { loadingComponent } from '../components/shared/loading.component';
 
 
 @NgModule({
@@ -21,17 +18,16 @@ import { FitterResolverService } from '../components/client/fiiter-list/fitter-r
     CommonModule,
     RouterModule.forChild([
        {path: 'home', component: HomeComponent, resolve: {fitter: TabelaFitterResolverService} },
-       {path: 'selecionarmanutentor/:servicetype', component: FitterListComponent, resolve:{fitter: FitterResolverService}}
+       {path: 'selecionarmanutentor/:id', component: FitterListComponent, data:{offer: ':offer'}}
     ]),
     ReactiveFormsModule,
     SharedModule
   ],
-  declarations: [HomeComponent, TabelaFitterComponent, FitterListComponent],
+  declarations: [HomeComponent, TabelaFitterComponent, FitterListComponent, loadingComponent],
   providers: [
     FitterService,
     TypeServiceService,
     TabelaFitterResolverService,
-    FitterResolverService
   ]
 })
 export class ClientModule { }

@@ -5,7 +5,6 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 @Injectable()
 export class TabelaFitterResolverService implements Resolve<any> {
 
-  
   constructor(private fitterService: FitterService) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {

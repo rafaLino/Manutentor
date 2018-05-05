@@ -5,7 +5,7 @@ import { FitterService } from '../../../services/fitter.service';
 import { ClientService } from '../../../services/client.service';
 import { TypeServiceService } from '../../../services/type-service.service';
 import { Iclient } from '../../../entities/client';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 
@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
  typeServices: IserviceType[];
  currentUser: Iclient; 
  offerForm: FormGroup;
+ 
 
   constructor(
     private svcTypeService: TypeServiceService,
@@ -27,13 +28,12 @@ export class HomeComponent implements OnInit {
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
-
   ngOnInit() {
 
     this.offerForm = this.fb.group({
       ClientId: this.currentUser.id,
-      ServiceTypeId: '',
-      Description: ''
+      ServiceTypeId: ['', Validators.required],
+      Description: ['', Validators.required]
     });
 
     this.svcTypeService.getList()
@@ -44,7 +44,8 @@ export class HomeComponent implements OnInit {
 
 
   Send(): void{
-    var servicetype = this.offerForm.get('ServiceTypeId');
+    var servicetype = +this.offerForm.controls['ServiceTypeId'].value;
+    
     this.route.navigate(['selecionarmanutentor', servicetype]);
   }
 }

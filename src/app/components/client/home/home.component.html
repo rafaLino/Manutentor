@@ -1,14 +1,15 @@
+
 <div id="pai" class="container-fluid border rounded border-primary" align="center">
-
-  <h1 style="margin-top: 30px; color: white; text-shadow: 4px 4px black;">Manutentor</h1>
-
-      <div id="caixa" class="container" align="center">
-        <div id="caixafilho" class="col-sm-8 col-md-8" align="center">
+    <h1 style="margin-top: 30px; color: white; text-shadow: 4px 4px black;">Manutentor</h1>
+  
+        <div id="caixa" class="container" align="center">
+          <div id="caixafilho" class="col-sm-8 col-md-8" align="center">
           <p style="font-size: 16px; margin-top: 20px;">O que podemos consertar para você?</p>
           <form [formGroup]="offerForm" (ngSubmit)="Send();" >
         <div class="row">
           <div class="form-group col-offset-2 col-sm col-md-4">
             <select formControlName="ServiceTypeId" class="form-control">
+            <option value='' disabled selected>--Selecione--</option>
               <option *ngFor='let type of typeServices'
               [value]='type.id'>{{type.description}}</option>
 
@@ -28,17 +29,14 @@
 
 
             <div class="col-md-4 offset-md-4">
-                <button type="submit" class="btn btn-success btn-sm">Enviar Pedido</button>
+                <button type="submit" [disabled]="!offerForm.valid" class="btn btn-success btn-sm">Enviar Pedido</button>
             </div>
           </div>
         </form>
           <app-tabela-fitter></app-tabela-fitter>
-          <app-bind-offer [offer]='offerForm' ></app-bind-offer>
         </div>
-      </div>
+        </div>
 <div class="container" align="center">
   <p style="color: white; font-weight: bolder; margin-top: 350px;">Todos os direitos reservados</p>
 </div>
-
-
 </div>
