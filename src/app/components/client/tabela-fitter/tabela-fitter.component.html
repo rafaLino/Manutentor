@@ -8,7 +8,7 @@
        </tr>
      </thead>
      <tbody>
-       <tr *ngFor='let fitter of fitterList'>
+       <tr *ngFor='let fitter of fitterList' (click)='seleciona(fitter)'>
          <td>
            <span *ngIf='fitter.availability; then verdadeiro else falso'></span>
            <ng-template #verdadeiro><i class="material-icons" style="color: green">fiber_manual_record</i></ng-template>

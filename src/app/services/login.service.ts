@@ -10,7 +10,7 @@ import { Ifitter } from '../entities/fitter';
 
 @Injectable()
 export class LoginService {
-private api = 'http://localhost:6336/api/Login/';
+private api = 'http://localhost:6336/api/Login';
 private headers: HttpHeaders;
   constructor(private _http: HttpClient) {
     let _headers = new HttpHeaders();

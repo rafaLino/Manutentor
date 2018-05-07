@@ -28,12 +28,14 @@
             </div>
 
 
-            <div class="col-md-4 offset-md-4">
-                <button type="submit" [disabled]="!offerForm.valid" class="btn btn-success btn-sm">Enviar Pedido</button>
-            </div>
+            
           </div>
         </form>
-          <app-tabela-fitter></app-tabela-fitter>
+          <app-tabela-fitter [fitterId]='fitterId'></app-tabela-fitter>
+          
+          <div class="col-md-4 offset-md-4">
+            <button type="submit" [disabled]="!offerForm.valid" class="btn btn-success btn-sm">Enviar Pedido</button>
+        </div>
         </div>
         </div>
 <div class="container" align="center">

@@ -7,6 +7,8 @@ import { TypeServiceService } from '../../../services/type-service.service';
 import { Iclient } from '../../../entities/client';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+
 
 
 @Component({
@@ -16,8 +18,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class HomeComponent implements OnInit {
  typeServices: IserviceType[];
  currentUser: Iclient; 
- offerForm: FormGroup;
  
+ offerForm: FormGroup;
+ fitterId: number;
+
 
   constructor(
     private svcTypeService: TypeServiceService,
@@ -32,8 +36,10 @@ export class HomeComponent implements OnInit {
 
     this.offerForm = this.fb.group({
       ClientId: this.currentUser.id,
+      FitterId: ['', Validators.required],
       ServiceTypeId: ['', Validators.required],
-      Description: ['', Validators.required]
+      Description: ['', Validators.required],
+
     });
 
     this.svcTypeService.getList()
@@ -43,9 +49,7 @@ export class HomeComponent implements OnInit {
   }
 
 
-  Send(): void{
-    var servicetype = +this.offerForm.controls['ServiceTypeId'].value;
-    
-    this.route.navigate(['selecionarmanutentor', servicetype]);
+  Send(): void{    
+    console.log(this.offerForm.value);
   }
 }

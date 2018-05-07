@@ -5,7 +5,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService } from '../../services/alert.service';
 import { Location } from '@angular/common';
 
-
 @Component({
   moduleId: module.id,
   templateUrl: './login.component.html',
@@ -42,7 +41,11 @@ export class LoginComponent implements OnInit  {
      this.service.LoginClient(data)
      .subscribe(
        resp => {
+         if(resp.id > 0)
             this.router.navigate(['home']); 
+            else
+            this.alertService.error("Usuário e/ou senha não encontrado");
+            
                 },
                 error => {
                     this.alertService.error(error);

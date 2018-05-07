@@ -7,7 +7,7 @@ import { Iservice } from '../entities/service';
 @Injectable()
 export class FitterService {
 
-  private api = 'http://localhost:6336/api/Fitter/';
+  private api = 'http://localhost:6336/api/Fitter';
   private headers: HttpHeaders;
   constructor(private _http: HttpClient) {
     let _headers = new HttpHeaders();

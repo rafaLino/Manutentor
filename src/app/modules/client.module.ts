@@ -9,25 +9,26 @@ import { SharedModule } from '../components/shared/shared.module';
 import { TabelaFitterComponent } from '../components/client/tabela-fitter/tabela-fitter.component';
 import { TabelaFitterResolverService } from '../components/client/tabela-fitter/tabela-fitter-resolver.service';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FitterListComponent } from '../components/client/fiiter-list/fitter-list.component';
+
 import { loadingComponent } from '../components/shared/loading.component';
+
 
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild([
-       {path: 'home', component: HomeComponent, resolve: {fitter: TabelaFitterResolverService} },
-       {path: 'selecionarmanutentor/:id', component: FitterListComponent, data:{offer: ':offer'}}
+       {path: 'home', component: HomeComponent, resolve: {fitter: TabelaFitterResolverService} },       
     ]),
     ReactiveFormsModule,
     SharedModule
   ],
-  declarations: [HomeComponent, TabelaFitterComponent, FitterListComponent, loadingComponent],
+  declarations: [HomeComponent, TabelaFitterComponent,  loadingComponent],
   providers: [
     FitterService,
     TypeServiceService,
     TabelaFitterResolverService,
+    
   ]
 })
 export class ClientModule { }
