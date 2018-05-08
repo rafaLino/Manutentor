@@ -40,8 +40,11 @@ export class LoginManutentorComponent implements OnInit {
      this.service.LoginFitter(data)
      .subscribe(
        resp => {
-            this.router.navigate(['fitter']); 
-                },
+        if(resp.id > 0)
+        this.router.navigate(['home']); 
+        else
+        this.alertService.error("Usuário e/ou senha não encontrado");
+       },
                 error => {
                     this.alertService.error(error);
                     this.loading = false;

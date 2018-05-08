@@ -1,17 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FitterComponent } from '../components/fitter/fitter.component';
+
 import { RouterModule } from '@angular/router';
+import { HomeComponent } from '../components/fitter/home/home.component';
 
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild([
-      {path:'fitter', component: FitterComponent}
+      {path:'manutentor', component: HomeComponent}
     ])
   ],
-  declarations: [FitterComponent],
+  declarations: [HomeComponent],
   
 })
 export class FitterModule { }

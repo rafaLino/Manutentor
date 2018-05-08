@@ -1,8 +1,8 @@
 export interface Ioffer {
 id: number;
 clientId: number;
-fiiter: number;
-serviceTypeId: number;
+fitter: number;
+serviceType: string;
 description: string;
 images: Array<string>;
 

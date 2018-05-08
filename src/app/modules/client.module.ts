@@ -11,6 +11,8 @@ import { TabelaFitterResolverService } from '../components/client/tabela-fitter/
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { loadingComponent } from '../components/shared/loading.component';
+import { ServicoComponent } from '../components/client/servico/servico.component';
+
 
 
 
@@ -23,7 +25,7 @@ import { loadingComponent } from '../components/shared/loading.component';
     ReactiveFormsModule,
     SharedModule
   ],
-  declarations: [HomeComponent, TabelaFitterComponent,  loadingComponent],
+  declarations: [HomeComponent, TabelaFitterComponent,  loadingComponent, ServicoComponent],
   providers: [
     FitterService,
     TypeServiceService,

@@ -8,6 +8,7 @@ import { Iclient } from '../../../entities/client';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { OfferService } from '../../../services/offer.service';
 
 
 
@@ -24,6 +25,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private svcTypeService: TypeServiceService,
+    private svcOffer: OfferService,
     private fb: FormBuilder,
     private route: Router,
     private activeRoute: ActivatedRoute,
@@ -49,11 +51,13 @@ export class HomeComponent implements OnInit {
 
 
   Send(): void{    
-  console.log(JSON.stringify(this.form.value));
+    const Formdata = JSON.stringify(this.form.value);
+    this.svcOffer.post(Formdata);
+    
   }
 
   receiveForm($event){
     this.form.patchValue({FitterId: $event});
-    console.log(this.form.value);
+    
   }
 }

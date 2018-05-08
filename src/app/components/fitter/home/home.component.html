@@ -1,0 +1,21 @@
+<div id="pai" class="container-fluid border rounded border-primary" align="center">
+    <h1 style="margin-top: 30px; color: white; text-shadow: 4px 4px black;">Manutentor</h1>
+  
+        <div id="caixa" class="container" align="center">
+        <div id="caixafilho" class="col-sm-8 col-md-8" align="center">
+          <div class="col-md-8 col-sm-8">
+            <span>Oferta de Serviços</span> 
+            <table class="table table-responsive">
+              <tr *ngFor='oferta of ofertas' (click)="seleciona(oferta)">
+                <td>{{oferta?.description}}</td>
+                <td>{{oferta?.serviceType}}</td> 
+              </tr>
+
+            </table>
+          </div>
+        </div>
+        </div>
+<div class="container" align="center">
+  <p style="color: white; font-weight: bolder; margin-top: 350px;">Todos os direitos reservados</p>
+</div>
+</div>
