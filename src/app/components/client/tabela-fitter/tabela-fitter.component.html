@@ -1,5 +1,6 @@
-<div class="row table-responsive col-sm-8" style=" font-size: 14px; margin-top: 100px;">
-  <table class="table table-bordered table-hover" style="background: white; color: black;">
+<loading [hidden]='!loading' ></loading>
+<div [hidden]='loading' class="row table-responsive col-sm-8" style=" font-size: 14px; margin-top: 15px;">
+  <table id="tabela" class="table table-reponsive table-bordered table-hover" style="background: white; color: black;">
      <thead>
        <tr>
          <th scope="col">Disponível</th>

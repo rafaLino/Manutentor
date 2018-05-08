@@ -6,13 +6,13 @@ import { Component } from "@angular/core";
     template: `<div class="loader"></div>`,
     styles: [ `
     .loader {
-        border: 16px solid #f3f3f3; /* Light grey */
-        border-top: 16px solid #3498db; /* Blue */
+        border: 12px solid #f3f3f3; /* Light grey */
+        border-top: 12px solid #3498db; /* Blue */
         border-radius: 50%;
-        width: 130px;
-        height: 130px;
+        width: 80px;
+        height: 80px;
         animation: spin 2s linear infinite;
-        margin: 20% 40%;
+        
     }
     
     @keyframes spin {

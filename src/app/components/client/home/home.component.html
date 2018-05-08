@@ -5,7 +5,7 @@
         <div id="caixa" class="container" align="center">
           <div id="caixafilho" class="col-sm-8 col-md-8" align="center">
           <p style="font-size: 16px; margin-top: 20px;">O que podemos consertar para você?</p>
-          <form [formGroup]="offerForm" (ngSubmit)="Send();" >
+          <form [formGroup]="form" (ngSubmit)="Send();" >
         <div class="row">
           <div class="form-group col-offset-2 col-sm col-md-4">
             <select formControlName="ServiceTypeId" class="form-control">
@@ -19,23 +19,20 @@
 
           <div class="form-group col-sm-8 col-md-8">
             <label for="Description" style="font-size: 14px; ">Descreva seu problema</label>
-            <textarea formControlName="Description" id="descricao" class="form-control" rows="3"></textarea>
-          </div>
+            <textarea class="form-control" formControlName="Description" id="descricao" ></textarea>
+          </div>   
 
           <div class="row col-md-8">
             <div class="col-md-4">
               <button type="button" class="btn btn-primary btn-sm">Insira uma foto (Opcional)</button>
             </div>
-
-
-            
+            <div class="col-md-4 offset-md-4">
+              <button type="submit" [disabled]="!form.valid" class="btn btn-success btn-sm">Enviar Pedido</button>
           </div>
-        </form>
-          <app-tabela-fitter [fitterId]='fitterId'></app-tabela-fitter>
+          </div>
+        </form>  
+          <app-tabela-fitter (formEvent)="receiveForm($event)" ></app-tabela-fitter>
           
-          <div class="col-md-4 offset-md-4">
-            <button type="submit" [disabled]="!offerForm.valid" class="btn btn-success btn-sm">Enviar Pedido</button>
-        </div>
         </div>
         </div>
 <div class="container" align="center">

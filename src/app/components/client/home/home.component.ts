@@ -18,8 +18,7 @@ import { Observable } from 'rxjs/Observable';
 export class HomeComponent implements OnInit {
  typeServices: IserviceType[];
  currentUser: Iclient; 
- 
- offerForm: FormGroup;
+ form: FormGroup;
  fitterId: number;
 
 
@@ -34,9 +33,9 @@ export class HomeComponent implements OnInit {
   }
   ngOnInit() {
 
-    this.offerForm = this.fb.group({
+    this.form = this.fb.group({
       ClientId: this.currentUser.id,
-      FitterId: ['', Validators.required],
+      FitterId: [this.fitterId, Validators.required],
       ServiceTypeId: ['', Validators.required],
       Description: ['', Validators.required],
 
@@ -50,6 +49,11 @@ export class HomeComponent implements OnInit {
 
 
   Send(): void{    
-    console.log(this.offerForm.value);
+  console.log(JSON.stringify(this.form.value));
+  }
+
+  receiveForm($event){
+    this.form.patchValue({FitterId: $event});
+    console.log(this.form.value);
   }
 }

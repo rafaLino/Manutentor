@@ -1,9 +1,8 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Ifitter } from '../../../entities/fitter';
 import { FitterService } from '../../../services/fitter.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup } from '@angular/forms';
-import { EventEmitter } from 'protractor';
 
 @Component({
   selector: 'app-tabela-fitter',
@@ -12,7 +11,8 @@ import { EventEmitter } from 'protractor';
 })
 export class TabelaFitterComponent implements OnInit {
   fitterList: Ifitter[];
-  @Input() fitterId: number;
+  loading = true;
+  @Output() formEvent = new EventEmitter<number>();
   
   constructor(
   private svcFitter: FitterService,
@@ -20,12 +20,15 @@ export class TabelaFitterComponent implements OnInit {
 ) { }
 
   ngOnInit() {
-    this.fitterList = this.route.snapshot.data['fitter']
+   this.svcFitter.getByDisponibilidade()
+    .subscribe( fitters =>{
+      this.fitterList = fitters;
+      this.loading = false;
+    });
 
   }
 
   seleciona(fitter: Ifitter){
-    this.fitterId = fitter.id;
-    console.log(fitter.id);
+    this.formEvent.emit(fitter.id);
   }
 }
