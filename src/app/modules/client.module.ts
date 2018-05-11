@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { loadingComponent } from '../components/shared/loading.component';
 import { ServicoComponent } from '../components/client/servico/servico.component';
+import { OfferService } from '../services/offer.service';
 
 
 
@@ -30,7 +31,7 @@ import { ServicoComponent } from '../components/client/servico/servico.component
     FitterService,
     TypeServiceService,
     TabelaFitterResolverService,
-    
+    OfferService 
   ]
 })
 export class ClientModule { }

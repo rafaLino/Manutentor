@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
 
 
   seleciona(oferta:Ioffer){
-    
+    console.log(oferta);
   }
 
 }

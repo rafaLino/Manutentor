@@ -1,3 +1,5 @@
+import { IserviceType } from "./iservice-type";
+
 export interface Ifitter {
   id: number;
   cpf: string;
@@ -19,4 +21,5 @@ export interface Ifitter {
   ratings: Array<string>;
   averageRating: number;
   availability: boolean;
+  serviceType: Array<IserviceType>;
 }
