@@ -2,11 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Ioffer } from '../entities/offer';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class OfferService {
 
-  private api = 'http://localhost:6336/api/Offer/';
+  private api = 'http://localhost:6336/api/Offer';
   private headers: HttpHeaders;
   constructor(private _http: HttpClient) {
     let _headers = new HttpHeaders();
@@ -22,6 +26,7 @@ export class OfferService {
   get(id: number): Observable<Ioffer> {
     return this._http.get<Ioffer>(`${this.api}/${id}`,{headers: this.headers})
     .catch(this.handleError);
+    
   }
 
   delete(id: number) {
@@ -38,22 +43,6 @@ export class OfferService {
     return this._http.put(`${this.api}/${id}`, offer,{headers: this.headers})
     .catch(this.handleError);
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

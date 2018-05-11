@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import 'rxjs/add/Observable/throw';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import { Iclient } from '../entities/client';

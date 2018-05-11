@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpErrorResponse, HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Iservice } from '../entities/service';
-
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/map';
 @Injectable()
 export class ServiceService {
 

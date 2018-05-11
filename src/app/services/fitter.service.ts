@@ -3,7 +3,10 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Ifitter } from '../entities/fitter';
 import { Observable } from 'rxjs/Observable';
 import { Iservice } from '../entities/service';
-
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/map';
 @Injectable()
 export class FitterService {
 
