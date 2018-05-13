@@ -14,6 +14,7 @@ import { AuthguardService } from './guard/authguard.service';
 import { LoginManutentorComponent } from './components/login/login-manutentor/login-manutentor.component';
 import { FitterModule } from './modules/fitter.module';
 import { ClientModule } from './modules/client.module';
+import { SharedModule } from './components/shared/shared.module';
 
 
 @NgModule({

@@ -1,35 +1,48 @@
-
-     <div id="pai" class="container-fluid border rounded border-primary" align="center">
-
-        <h1 style="margin-top: 30px; color: white; text-shadow: 4px 4px black;">Manutentor</h1>
-     <form [formGroup]="LoginForm" (ngSubmit)="Login();" id="login" role="form" >
-
-        <div id="inner" class="form-group">
-
-          <label for="exampleInputEmail1" style="margin-top: 20px;">
-            Login
-          </label>
-
-          <input formControlName="Email" type="email" class="input-class" id="exampleInputEmail1" placeholder="Digite o seu e-mail" required>
-          <input formControlName="Password" type="password" class="input-class" id="senha" placeholder="Digite sua senha" required>
-
-          <button id="avancar" type="submit" class="btn btn-success" style="font-weight: bold;">
-            Avançar
-            
-          </button>
-          <div class="block">
-            <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+     <div class="col m6 s5" align="center" width="120px">
+     <form class="col m6 s4" [formGroup]="LoginForm" (ngSubmit)="Login();" role="form" >
+       <div class="row">
+        <h1 class="h1 Color-Cerulean">Manutentor</h1>
+       </div>
+          <div class="row">
+            <div class="input-field col offset-m3 m6 s4">
+              <input formControlName="Email" id="email" type="text" class="validate">
+              <label for="email">Email</label>
+            </div>
           </div>
-          <a routerLink="/loginManutentor" class="row link" style="margin-left: 28%">Você é um Manutentor?</a>
-          <span>Não é cadastrado? </span>
-          <button id="cadastrar" type="button" class="btn btn-primary" style="font-weight: bold;">
-            Cadastre-se
-          </button>
-
-        </div>
+            <div class="row">
+              <div class="input-field col offset-m3 m6 s4">
+                <input formControlName="Password" id="password" type="password" class="validate">
+                <label for="password">Senha</label>
+              </div>
+            </div>
+          <div class="row">
+            <button class="btn btn-large waves-effect waves-light Color-MayaBlue" type="submit">
+              <span class="Color-White">Entrar
+             <i *ngIf='!loading' class="material-icons right">send</i>
+             </span>
+             <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            </button>
+          </div>
+          <div class="row">
+            <a routerLink="/loginManutentor" class="row blue-text text-darken-4">Você é um Manutentor?</a>
+            </div>
+            <div class="row">
+              <div class="col offset-m3 m3 s4">
+                  <span class="h3 Color-PrussianBlue">Não é cadastrado? </span>
+              </div>   
+              <div class="col m3 s3">
+              <button id="cadastrar" type="button" class="btn waves-effect waves-light Color-PrussianBlue">
+                    <span class="Color-White">Cadastre-se</span>
+              </button>
+          </div>        
+          </div>
       </form>
-
-      <div class="container" align="center">
-          <p style="color: white; font-weight: bolder; margin-top: 260px;">Todos os direitos reservados</p>
+    </div>
+      <footer margin-left="30%">
+      <div class="footer-copyright">
+          <div class="container">
+          ©2018 Manutentor
+          <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+          </div>
         </div>
-        </div>
+      </footer>

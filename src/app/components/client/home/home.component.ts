@@ -47,6 +47,8 @@ export class HomeComponent implements OnInit {
     .subscribe( types => {
      this.typeServices = types;     
     });
+
+    
   }
 
 

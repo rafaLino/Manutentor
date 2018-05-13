@@ -41,7 +41,7 @@ export class LoginManutentorComponent implements OnInit {
      .subscribe(
        resp => {
         if(resp.id > 0)
-        this.router.navigate(['home']); 
+        this.router.navigate(['manutentor']); 
         else
         this.alertService.error("Usuário e/ou senha não encontrado");
        },

@@ -7,12 +7,25 @@
             <span>Oferta de Serviços</span> 
             <table class="table table-responsive">
               <tr *ngFor='let oferta of ofertas' (click)="seleciona(oferta)">
-                <td>{{oferta?.description}}</td>
-                <td>{{oferta?.serviceType}}</td> 
+                <td>{{oferta.description}}</td>
+                <td>{{oferta.serviceType}}</td> 
               </tr>
 
             </table>
           </div>
+        </div>
+
+        <div class="col-sm-8 col-md-8" align="center">
+          <table class="table table-responsive">
+            <tr *ngFor="let servico of servicos" >
+              <td>{{servico.status}}</td>
+              <td>{{servico.serviceType}}</td>
+              <td>{{servico.value}}</td>
+              <td>{{servico.value}}</td>
+              <td>{{servico.comments}}</td>
+              <td>{{servico.comments}}</td>
+            </tr>
+          </table>
         </div>
         </div>
 <div class="container" align="center">

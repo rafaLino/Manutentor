@@ -30,5 +30,13 @@ export class TabelaFitterComponent implements OnInit {
 
   seleciona(fitter: Ifitter){
     this.formEvent.emit(fitter.id);
+    
   }
+
+
+  onRatingClicked(message: string): void {
+    console.log(message);
+}
+
+  
 }

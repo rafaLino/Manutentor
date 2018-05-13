@@ -9,13 +9,13 @@
        </tr>
      </thead>
      <tbody>
-       <tr *ngFor='let fitter of fitterList' (click)='seleciona(fitter)'>
+       <tr *ngFor='let fitter of fitterList'>
          <td>
            <span *ngIf='fitter.availability; then verdadeiro else falso'></span>
            <ng-template #verdadeiro><i class="material-icons" style="color: green">fiber_manual_record</i></ng-template>
            <ng-template #falso><i class="material-icons" style="color: red">fiber_manual_record</i></ng-template>
          </td>
-         <td>{{fitter.name}}</td>
+         <td  (click)='seleciona(fitter)'>{{fitter.name}}</td>
          <td>
            <pm-star [rating]='fitter.averageRating'
            (ratingClicked)='onRatingClicked($event)'>

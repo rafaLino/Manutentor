@@ -4,3 +4,8 @@
 div {
     cursor: pointer;
 }
+
+.iconIMG {
+    width: 24px;
+    height: 24px;
+}
