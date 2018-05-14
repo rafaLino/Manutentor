@@ -1,41 +1,60 @@
+<ul id="slide-out" class="sidenav">
+  <li><div class="user-view">
+    <div class="background">
+      <img src="images/office.jpg">
+    </div>
+    <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
+    <a href="#name"><span class="white-text name">John Doe</span></a>
+    <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+  </div></li>
+  <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+  <li><a href="#!">Second Link</a></li>
+  <li><div class="divider"></div></li>
+  <li><a class="subheader">Subheader</a></li>
+  <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+</ul>
 
-<div id="pai" class="container-fluid border rounded border-primary" align="center">
-    <h1 style="margin-top: 30px; color: white; text-shadow: 4px 4px black;">Manutentor</h1>
-  
-        <div id="caixa" class="container" align="center">
-          <div id="caixafilho" class="col-sm-8 col-md-8" align="center">
-          <p style="font-size: 16px; margin-top: 20px;">O que podemos consertar para você?</p>
-          <form [formGroup]="form" (ngSubmit)="Send();" >
+<div class="col m3 s2 left">
+  <a id="botao" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+</div>
+<div id="pai" class="col m7 s7"  align="center">
+    <div class="row">
+      <div class="col m7 s9">
+      <h1 class="h2">O que podemos consertar para você?</h1>
+    </div>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="Send();" >
+      <div class="row">
+            <div class="input-field col offset-m2 m5 s12">
+              <select class="browser-default col m8" formControlName="ServiceTypeId">
+                <option value='' disabled selected>--Selecione--</option>
+                <option *ngFor='let type of typeServices' [value]='type.id'>{{type.description}}</option>
+              </select>              
+          </div>
+        </div>
         <div class="row">
-          <div class="form-group col-offset-2 col-sm col-md-4">
-            <select formControlName="ServiceTypeId" class="form-control">
-            <option value='' disabled selected>--Selecione--</option>
-              <option *ngFor='let type of typeServices'
-              [value]='type.id'>{{type.description}}</option>
-
-            </select>
-          </div>
-        </div>
-
-          <div class="form-group col-sm-8 col-md-8">
-            <label for="Description" style="font-size: 14px; ">Descreva seu problema</label>
-            <textarea class="form-control" formControlName="Description" id="descricao" ></textarea>
+          <div class="input-field col offset-m2 m7 s12">
+            <textarea class="materialize-textarea" id="Description" formControlName="Description" data-length="500"></textarea>
+            <label for="Description">Descreva seu Problema</label>
           </div>   
+        </div>
+          <div class="row">
+              <div class="col offset-m2 m4 s7">
+                <button type="button" class="btn btn-small blue darken-2 ">Insira uma foto (Opcional)</button>
+              </div>
+              <div class="col m4 s5">
+                <button type="submit" [disabled]="!form.valid" class="waves-effect waves-light btn teal accent-4 white-text">Enviar Pedido</button>
+              </div>
+          </div>
+    </form>  
+  </div>
+         <div class="row" style="margin-left: 17%; width: 58%;"> 
+           <app-tabela-fitter (formEvent)="receiveForm($event)" ></app-tabela-fitter>
+         </div>
 
-          <div class="row col-md-8">
-            <div class="col-md-4">
-              <button type="button" class="btn btn-primary btn-sm">Insira uma foto (Opcional)</button>
-            </div>
-            <div class="col-md-4 offset-md-4">
-              <button type="submit" [disabled]="!form.valid" class="btn btn-success btn-sm">Enviar Pedido</button>
-          </div>
-          </div>
-        </form>  
-          <app-tabela-fitter (formEvent)="receiveForm($event)" ></app-tabela-fitter>
-          
-        </div>
-        </div>
-<div class="container" align="center">
-  <p style="color: white; font-weight: bolder; margin-top: 350px;">Todos os direitos reservados</p>
-</div>
-</div>
+         <script>
+         $("#botao").click(function(e){
+            e.preventDefault();
+            $('.sidenav').sidenav('show');
+         })
+         </script>

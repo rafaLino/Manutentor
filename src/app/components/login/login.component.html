@@ -4,19 +4,19 @@
         <h1 class="h1 Color-Cerulean">Manutentor</h1>
        </div>
           <div class="row">
-            <div class="input-field col offset-m3 m6 s4">
-              <input formControlName="Email" id="email" type="text" class="validate">
+            <div class="input-field col offset-m4 m6 s4">
+              <input formControlName="Email" id="email" type="text" class="col m8 validate">
               <label for="email">Email</label>
             </div>
           </div>
             <div class="row">
-              <div class="input-field col offset-m3 m6 s4">
-                <input formControlName="Password" id="password" type="password" class="validate">
+              <div class="input-field col offset-m4 m6 s4">
+                <input formControlName="Password" id="password" type="password" class="col m8 validate">
                 <label for="password">Senha</label>
               </div>
             </div>
           <div class="row">
-            <button class="btn btn-large waves-effect waves-light Color-MayaBlue" type="submit">
+            <button id="entrar" class="btn btn-large waves-effect waves-light Color-PrussianBlue" type="submit">
               <span class="Color-White">Entrar
              <i *ngIf='!loading' class="material-icons right">send</i>
              </span>

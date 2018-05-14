@@ -17,11 +17,13 @@ import { OfferService } from '../services/offer.service';
 
 
 
+
+
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild([
-       {path: 'home', component: HomeComponent, resolve: {fitter: TabelaFitterResolverService} },       
+       {path: 'home', component: HomeComponent, resolve: {fitter: TabelaFitterResolverService}},       
     ]),
     ReactiveFormsModule,
     SharedModule

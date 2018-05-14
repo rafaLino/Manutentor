@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { IserviceType } from '../../../entities/iservice-type';
 import { Ifitter } from '../../../entities/fitter';
 import { FitterService } from '../../../services/fitter.service';
@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit {
 
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  
   }
   ngOnInit() {
 
@@ -48,9 +49,7 @@ export class HomeComponent implements OnInit {
      this.typeServices = types;     
     });
 
-    
   }
-
 
   Send(): void{    
     const Formdata = JSON.stringify(this.form.value);

@@ -16,7 +16,6 @@ import { FitterModule } from './modules/fitter.module';
 import { ClientModule } from './modules/client.module';
 import { SharedModule } from './components/shared/shared.module';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +36,8 @@ import { SharedModule } from './components/shared/shared.module';
     ReactiveFormsModule,
     ClientModule,
     FitterModule
+    
+    
   ],
   providers: [
     AlertService,
