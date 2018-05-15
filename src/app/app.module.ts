@@ -9,13 +9,11 @@ import { AlertService } from './services/alert.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from './services/login.service';
 import { NotfoudComponent } from './components/notfoud/notfoud.component';
-
 import { AuthguardService } from './guard/authguard.service';
 import { LoginManutentorComponent } from './components/login/login-manutentor/login-manutentor.component';
 import { FitterModule } from './modules/fitter.module';
 import { ClientModule } from './modules/client.module';
 import { SharedModule } from './components/shared/shared.module';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,15 +34,12 @@ import { SharedModule } from './components/shared/shared.module';
     ReactiveFormsModule,
     ClientModule,
     FitterModule
-    
-    
   ],
   providers: [
     AlertService,
     LoginService,
     AuthguardService
 
-  ],
-  bootstrap: [AppComponent]
+  ]  
 })
 export class AppModule { }

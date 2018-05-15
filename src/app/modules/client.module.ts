@@ -9,14 +9,10 @@ import { SharedModule } from '../components/shared/shared.module';
 import { TabelaFitterComponent } from '../components/client/tabela-fitter/tabela-fitter.component';
 import { TabelaFitterResolverService } from '../components/client/tabela-fitter/tabela-fitter-resolver.service';
 import { ReactiveFormsModule } from '@angular/forms';
-
 import { loadingComponent } from '../components/shared/loading.component';
 import { ServicoComponent } from '../components/client/servico/servico.component';
 import { OfferService } from '../services/offer.service';
-
-
-
-
+import { AppComponent } from '../app.component';
 
 
 @NgModule({
@@ -27,6 +23,7 @@ import { OfferService } from '../services/offer.service';
     ]),
     ReactiveFormsModule,
     SharedModule
+
   ],
   declarations: [HomeComponent, TabelaFitterComponent,  loadingComponent, ServicoComponent],
   providers: [
@@ -34,6 +31,7 @@ import { OfferService } from '../services/offer.service';
     TypeServiceService,
     TabelaFitterResolverService,
     OfferService 
-  ]
+  ],
+  bootstrap: [AppComponent]
 })
 export class ClientModule { }

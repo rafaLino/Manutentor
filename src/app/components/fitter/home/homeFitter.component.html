@@ -1,34 +1,41 @@
-<div id="pai" class="container-fluid border rounded border-primary" align="center">
-    <h1 style="margin-top: 30px; color: white; text-shadow: 4px 4px black;">Manutentor</h1>
-  
-        <div id="caixa" class="container" align="center">
-        <div id="caixafilho" class="col-sm-8 col-md-8" align="center">
-          <div class="col-md-8 col-sm-8">
-            <span>Oferta de Serviços</span> 
-            <table class="table table-responsive">
-              <tr *ngFor='let oferta of ofertas' (click)="seleciona(oferta)">
-                <td>{{oferta.description}}</td>
-                <td>{{oferta.serviceType}}</td> 
-              </tr>
+<ul id="slide-out" class="sidenav">
+  <li><div class="user-view">
+    <div class="background">
+      <img src="images/office.jpg">
+    </div>
+    <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
+    <a href="#name"><span class="white-text name">John Doe</span></a>
+    <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+  </div></li>
+  <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+  <li><a href="#!">Second Link</a></li>
+  <li><div class="divider"></div></li>
+  <li><a class="subheader">Subheader</a></li>
+  <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+</ul>
 
-            </table>
+<div class="col m3 s2 left">
+  <a id="botao" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+</div>
+<div id="pai" class="col m7 s7"  align="center">
+      <div class="row">
+            <div class="col offset-m2 m5 s12">
+              <table class="responsive-table">
+                <tr *ngFor='let oferta of ofertas'>
+                  <td>{{oferta.serviceType}}</td>
+                  <td>{{oferta.description}}</td>
+                </tr>
+              </table>            
           </div>
         </div>
-
-        <div class="col-sm-8 col-md-8" align="center">
-          <table class="table table-responsive">
-            <tr *ngFor="let servico of servicos" >
-              <td>{{servico.status}}</td>
-              <td>{{servico.serviceType}}</td>
-              <td>{{servico.value}}</td>
-              <td>{{servico.value}}</td>
-              <td>{{servico.comments}}</td>
-              <td>{{servico.comments}}</td>
-            </tr>
-          </table>
+        <div class="row">
+         <table class="responsive-table">
+           <tr *ngFor='let servico of servicos'>
+            <td>{{servico.status}}</td> 
+            <td>{{servico.serviceType}}</td>
+            <td>{{servico.value}}</td>
+            <td>{{servico.comments}}</td>
+           </tr>
+         </table>
         </div>
-        </div>
-<div class="container" align="center">
-  <p style="color: white; font-weight: bolder; margin-top: 350px;">Todos os direitos reservados</p>
-</div>
-</div>
+  </div>

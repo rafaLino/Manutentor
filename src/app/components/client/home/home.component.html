@@ -1,22 +1,4 @@
-<ul id="slide-out" class="sidenav">
-  <li><div class="user-view">
-    <div class="background">
-      <img src="images/office.jpg">
-    </div>
-    <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
-    <a href="#name"><span class="white-text name">John Doe</span></a>
-    <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
-  </div></li>
-  <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-  <li><a href="#!">Second Link</a></li>
-  <li><div class="divider"></div></li>
-  <li><a class="subheader">Subheader</a></li>
-  <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
-</ul>
 
-<div class="col m3 s2 left">
-  <a id="botao" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-</div>
 <div id="pai" class="col m7 s7"  align="center">
     <div class="row">
       <div class="col m7 s9">
@@ -51,10 +33,3 @@
          <div class="row" style="margin-left: 17%; width: 58%;"> 
            <app-tabela-fitter (formEvent)="receiveForm($event)" ></app-tabela-fitter>
          </div>
-
-         <script>
-         $("#botao").click(function(e){
-            e.preventDefault();
-            $('.sidenav').sidenav('show');
-         })
-         </script>

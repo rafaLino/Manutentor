@@ -13,6 +13,7 @@ import { OfferService } from '../../../services/offer.service';
 
 
 @Component({
+  moduleId: module.id,
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
@@ -28,7 +29,8 @@ export class HomeComponent implements OnInit {
     private svcOffer: OfferService,
     private fb: FormBuilder,
     private route: Router,
-    private activeRoute: ActivatedRoute,
+    private activeRoute: ActivatedRoute
+
 
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -61,4 +63,6 @@ export class HomeComponent implements OnInit {
     this.form.patchValue({FitterId: $event});
     
   }
+
+
 }
