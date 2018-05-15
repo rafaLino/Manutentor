@@ -23,7 +23,7 @@ import { SharedModule } from './components/shared/shared.module';
     NotfoudComponent
   ],
   imports: [
-    BrowserModule,
+   BrowserModule,
     HttpClientModule,
     RouterModule.forRoot([            
       {path: 'loginManutentor', component: LoginManutentorComponent },
@@ -39,7 +39,7 @@ import { SharedModule } from './components/shared/shared.module';
     AlertService,
     LoginService,
     AuthguardService
-
-  ]  
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
