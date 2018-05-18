@@ -1,5 +1,5 @@
-<loading style="margin-left:50%;" [hidden]='!loading'></loading>
-  <table [hidden]='loading' id="tabela" class="highlight centered">
+
+  <table id="tabela" class="highlight centered">
      <thead>
        <tr>
          <th scope="col">Disponível</th>
@@ -8,7 +8,8 @@
        </tr>
      </thead>
      <tbody>
-       <tr *ngFor='let fitter of fitterList'>
+       <loading style="margin: 15%,0,0,50%;" [hidden]='!loading'></loading>
+       <tr [hidden]='loading' *ngFor='let fitter of fitterList'>
          <td>
            <span *ngIf='fitter.availability; then verdadeiro else falso'></span>
            <ng-template #verdadeiro><i class="material-icons" style="color: green">fiber_manual_record</i></ng-template>

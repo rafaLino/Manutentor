@@ -13,8 +13,13 @@ import { loadingComponent } from '../components/shared/loading.component';
 import { ServicoComponent } from '../components/client/servico/servico.component';
 import { OfferService } from '../services/offer.service';
 import { AppComponent } from '../app.component';
-
-
+import { MzModalModule } from 'ng2-materialize';
+import { MzButtonModule } from 'ng2-materialize';
+import { MzSelectModule } from 'ng2-materialize';
+import { MzTextareaModule } from 'ng2-materialize';
+import { MzSidenavModule } from 'ng2-materialize';
+import { MzIconModule, MzIconMdiModule } from 'ng2-materialize';
+import { MzCollapsibleModule } from 'ng2-materialize';
 @NgModule({
   imports: [
     CommonModule,
@@ -22,7 +27,27 @@ import { AppComponent } from '../app.component';
        {path: 'home', component: HomeComponent, resolve: {fitter: TabelaFitterResolverService}},       
     ]),
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    MzModalModule,
+    MzButtonModule,
+    MzSelectModule,
+    MzTextareaModule,
+    MzSidenavModule,
+    MzIconMdiModule,
+    MzIconModule,
+    MzCollapsibleModule
+
+  ],
+  exports: [
+    MzModalModule,
+    MzButtonModule,
+    MzSelectModule,
+    MzTextareaModule,
+    MzSidenavModule,
+    MzIconMdiModule,
+    MzIconModule,
+    MzCollapsibleModule,
+    loadingComponent
 
   ],
   declarations: [HomeComponent, TabelaFitterComponent,  loadingComponent, ServicoComponent],

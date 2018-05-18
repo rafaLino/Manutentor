@@ -38,6 +38,7 @@ export class HomeFitterComponent implements OnInit {
     this.offerService.getList()
     .subscribe( offers => {
       this.ofertas = offers;
+      console.log(offers);
       load = false;
     });
 

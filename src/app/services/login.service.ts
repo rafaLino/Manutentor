@@ -33,7 +33,7 @@ private headers: HttpHeaders;
 
   LoginFitter(data: string): Observable<Ifitter> {
     
-    return  this._http.post<Ifitter>(`${this.api}/fitter`, data, {headers: this.headers})
+    return  this._http.post<Ifitter>(`${this.api}/Fitter`, data, {headers: this.headers})
     .map( user => {
       if (user) {
           localStorage.setItem('currentUser', JSON.stringify(user));

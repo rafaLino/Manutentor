@@ -54,8 +54,9 @@ export class HomeComponent implements OnInit {
   }
 
   Send(): void{    
-    const Formdata = JSON.stringify(this.form.value);
-    this.svcOffer.post(Formdata);
+    const data = JSON.stringify(this.form.value);
+    this.svcOffer.post(data);
+    console.log(data.toString());
     
   }
 

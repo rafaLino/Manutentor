@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -14,6 +15,7 @@ import { LoginManutentorComponent } from './components/login/login-manutentor/lo
 import { FitterModule } from './modules/fitter.module';
 import { ClientModule } from './modules/client.module';
 import { SharedModule } from './components/shared/shared.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +26,7 @@ import { SharedModule } from './components/shared/shared.module';
   ],
   imports: [
    BrowserModule,
+   BrowserAnimationsModule,
     HttpClientModule,
     RouterModule.forRoot([            
       {path: 'loginManutentor', component: LoginManutentorComponent },

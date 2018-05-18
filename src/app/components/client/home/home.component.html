@@ -1,35 +1,69 @@
-
-<div id="pai" class="col m7 s7"  align="center">
-    <div class="row">
-      <div class="col m7 s9">
+<div id="pai" class="col m7 s7" align="center">
+  <div class="row">
+    <div class="col offset-m2 m7 s9">
       <h1 class="h2">O que podemos consertar para você?</h1>
     </div>
-    </div>
-    <form [formGroup]="form" (ngSubmit)="Send();" >
-      <div class="row">
-            <div class="input-field col offset-m2 m5 s12">
-              <select class="browser-default col m8" formControlName="ServiceTypeId">
-                <option value='' disabled selected>--Selecione--</option>
-                <option *ngFor='let type of typeServices' [value]='type.id'>{{type.description}}</option>
-              </select>              
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col offset-m2 m7 s12">
-            <textarea class="materialize-textarea" id="Description" formControlName="Description" data-length="500"></textarea>
-            <label for="Description">Descreva seu Problema</label>
-          </div>   
-        </div>
-          <div class="row">
-              <div class="col offset-m2 m4 s7">
-                <button type="button" class="btn btn-small blue darken-2 ">Insira uma foto (Opcional)</button>
-              </div>
-              <div class="col m4 s5">
-                <button type="submit" [disabled]="!form.valid" class="waves-effect waves-light btn teal accent-4 white-text">Enviar Pedido</button>
-              </div>
-          </div>
-    </form>  
   </div>
-         <div class="row" style="margin-left: 17%; width: 58%;"> 
-           <app-tabela-fitter (formEvent)="receiveForm($event)" ></app-tabela-fitter>
-         </div>
+  <form [formGroup]="form" (ngSubmit)="Send();">
+    <div class="row">
+      <div class=" col offset-m2 m5 s12">
+        <select id="options-select" class="browser-default col m8" formControlName="ServiceTypeId">
+          <option value="" disabled selected>--Selecione--</option>
+          <option *ngFor='let type of typeServices' [value]='type.id'>{{type.description}}</option>
+        </select>
+        
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col offset-m2 m7 s12">
+          <mz-textarea-container>
+        <textarea mz-textarea [label]="'Descrição'" [placeholder]="'Descreva seu Problema'" class="materialize-textarea" id="Description" formControlName="Description" length="250"></textarea>
+        <!-- <label for="Description">Descreva seu Problema</label> -->
+        </mz-textarea-container>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col offset-m2 m4 s7">
+        <button class="btn btn-small blue darken-2 " mz-button (click)="bottomSheetModal.open()">Insira uma foto</button>
+      </div>
+      <div class="col m4 s5">
+        <button type="submit" [disabled]="!form.valid" class="waves-effect waves-light btn teal accent-4 white-text">Enviar Pedido</button>
+      </div>
+      
+    </div>
+  </form>
+</div>
+<div class="row" style="margin-left: 17%; width: 58%;">
+  <app-tabela-fitter (formEvent)="receiveForm($event)"></app-tabela-fitter>
+</div>
+
+<!-- MODAL FOTO -->
+<mz-modal #bottomSheetModal [fixedFooter]="true" [options]="modalOptions">
+  <mz-modal-header>
+    <div class="row">
+      <button mz-button [flat]="true" mz-modal-close class="right">
+        <i class="material-icons">close</i>
+      </button>
+      <h5>Adicione Fotos</h5>
+
+    </div>
+  </mz-modal-header>
+  <mz-modal-content>
+    <div class="img-container">
+      <img src="../../../../assets/addimage.png" alt="" class="responsive-img" width="200px" height="200px" (mouseover)="hover=true"
+        (mouseleave)="hover=false" (click)="fileInput.click()">
+    </div>
+    <input #fileInput type="file" name="Images" style="display: none;">
+  </mz-modal-content>
+  <mz-modal-footer>
+    <button mz-button class="btn-floating btn-large left waves-effect waves-light red">
+      <i class="material-icons">add</i>
+    </button>
+    <button mz-button [flat]="true" class="btn btn-large waves-effect waves-light green white-text" mz-modal-close>Ok</button>
+  </mz-modal-footer>
+</mz-modal>
+
+
+<!-- SIDENAV -->
+
+ 

@@ -34,9 +34,12 @@ export class OfferService {
     .catch(this.handleError);
   }
 
-  post(offer): Observable<Ioffer> {
-    return this._http.post(this.api , offer,{headers: this.headers})
-    .catch(this.handleError);
+  post(offer: string): void {
+    console.log(offer);
+     this._http.post(`${this.api}/` , offer,{headers: this.headers}).subscribe(
+       res => console.log(res.toString())
+     );
+    
   }
 
   put(id: number, offer): Observable<Ioffer> {
