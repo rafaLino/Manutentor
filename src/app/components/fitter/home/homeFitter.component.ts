@@ -35,7 +35,7 @@ export class HomeFitterComponent implements OnInit {
 
  private carregarTabelas(): boolean{
     let load = true;
-    this.offerService.getList()
+    this.offerService.getList(this.currentUser.id)
     .subscribe( offers => {
       this.ofertas = offers;
       console.log(offers);

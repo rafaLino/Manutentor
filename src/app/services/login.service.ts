@@ -36,8 +36,7 @@ private headers: HttpHeaders;
     return  this._http.post<Ifitter>(`${this.api}/Fitter`, data, {headers: this.headers})
     .map( user => {
       if (user) {
-          localStorage.setItem('currentUser', JSON.stringify(user));
-          console.log(localStorage.getItem('currentUser'));
+          localStorage.setItem('currentUser', JSON.stringify(user));          
       }
       return user;
      })

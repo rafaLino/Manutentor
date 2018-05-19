@@ -1,6 +1,6 @@
 <div id="pai" class="col m7 s7" align="center">
   <div class="row">
-    <div class="col offset-m2 m7 s9">
+    <div class="col offset-m2 m7 s12">
       <h1 class="h2">O que podemos consertar para você?</h1>
     </div>
   </div>
@@ -31,10 +31,58 @@
       </div>
       
     </div>
+    <div class="row">
+      <div class="col offset-m1 m4 s5">
+      <mz-switch-container>
+        <input mz-switch
+          id="switch-id"
+          [off]="''"
+          [on]="'Minha Casa'"
+          [value]='minhacasa'
+          [checked]='true'
+          (change)="Mudou($event)"
+          type="checkbox"
+          >
+      </mz-switch-container>
+    </div>
+    </div>
+    <!-- ENDERECO -->
+    <div class="col m6 s6" [hidden]="minhacasa" style="margin-left: 17%;">
+    <div class="row" >
+      <div class="input-field col m8 s8">
+        <input id="Address" formControlName="Address" type="text" class="validate">
+        <label for="Address">Endereço</label>
+      </div>
+      <div class="input-field col m2 s3">
+        <input id="Number" formControlName="Number" type="text" class="validate">
+        <label for="Number">Número</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col m3 s6">
+        <input  id="Region" formControlName="Region" type="text" class="validate">
+        <label for="Region">Bairro</label>
+      </div>
+      <div class="input-field col m3 s3">
+        <input id="city" formControlName="City" type="text" class="validate">
+        <label for="city">Cidade</label>
+      </div>
+      <div class="input-field col m2 s2">
+        <input id="state" formControlName="State" type="text" class="validate">
+        <label for="state">UF</label>
+      </div>
+      <div class="input-field col m3 s4">
+          <input id="CEP" formControlName="CEP" type="text" class="validate">
+          <label for="CEP">CEP</label>
+        </div>
+    </div>
+    </div>
   </form>
 </div>
-<div class="row" style="margin-left: 17%; width: 58%;">
+<div class="row">
+  <div class="col offset-m2 m7 s12">
   <app-tabela-fitter (formEvent)="receiveForm($event)"></app-tabela-fitter>
+</div>
 </div>
 
 <!-- MODAL FOTO -->

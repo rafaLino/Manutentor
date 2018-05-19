@@ -20,6 +20,7 @@ import { MzTextareaModule } from 'ng2-materialize';
 import { MzSidenavModule } from 'ng2-materialize';
 import { MzIconModule, MzIconMdiModule } from 'ng2-materialize';
 import { MzCollapsibleModule } from 'ng2-materialize';
+import { MzSwitchModule } from 'ng2-materialize'
 @NgModule({
   imports: [
     CommonModule,
@@ -35,7 +36,8 @@ import { MzCollapsibleModule } from 'ng2-materialize';
     MzSidenavModule,
     MzIconMdiModule,
     MzIconModule,
-    MzCollapsibleModule
+    MzCollapsibleModule,
+    MzSwitchModule,
 
   ],
   exports: [
@@ -47,6 +49,7 @@ import { MzCollapsibleModule } from 'ng2-materialize';
     MzIconMdiModule,
     MzIconModule,
     MzCollapsibleModule,
+    MzSwitchModule,
     loadingComponent
 
   ],

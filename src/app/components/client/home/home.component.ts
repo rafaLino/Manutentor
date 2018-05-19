@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { OfferService } from '../../../services/offer.service';
+import { MzValidationModule } from 'ng2-materialize';
 
 
 
@@ -18,10 +19,11 @@ import { OfferService } from '../../../services/offer.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
- typeServices: IserviceType[];
- currentUser: Iclient; 
- form: FormGroup;
- fitterId: number;
+  typeServices: IserviceType[];
+  currentUser: Iclient;
+  form: FormGroup;
+  fitterId: number;
+  minhacasa = true;
 
 
   constructor(
@@ -34,7 +36,7 @@ export class HomeComponent implements OnInit {
 
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-  
+
   }
   ngOnInit() {
 
@@ -43,27 +45,65 @@ export class HomeComponent implements OnInit {
       FitterId: [this.fitterId, Validators.required],
       ServiceTypeId: ['', Validators.required],
       Description: ['', Validators.required],
+      Address:'',
+      Number: '',
+      Region: '',
+      City: '',
+      CEP: '',
+      State: ''
 
     });
 
     this.svcTypeService.getList()
-    .subscribe( types => {
-     this.typeServices = types;     
-    });
+      .subscribe(types => {
+        this.typeServices = types;
+      });
 
   }
 
-  Send(): void{    
+  Send(): void {
+    if(this.minhacasa)
+    this.preencheEndereco();
+
     const data = JSON.stringify(this.form.value);
-    this.svcOffer.post(data);
+    //this.svcOffer.post(data);
     console.log(data.toString());
+
+  }
+
+  receiveForm($event) {
+    this.form.patchValue({ FitterId: $event });
+
+  }
+
+  Mudou($event) {
+    if(!$event.target.checked){
+      this.clearEndereco();
+    }
+    this.minhacasa = $event.target.checked;
     
   }
 
-  receiveForm($event){
-    this.form.patchValue({FitterId: $event});
-    
+  preencheEndereco(){
+    this.form.patchValue({
+        Address: this.currentUser.address,
+        Number: this.currentUser.number,
+        Region: this.currentUser.region,
+        City: this.currentUser.city,
+        CEP: this.currentUser.cep,
+        State: this.currentUser.state
+    });
   }
 
+  clearEndereco(){
+    this.form.patchValue({
+      Address: '',
+      Number: '',
+      Region: '',
+      City: '',
+      CEP: '',
+      State: '',
+    });
+  }
 
 }

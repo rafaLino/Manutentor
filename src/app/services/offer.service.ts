@@ -18,8 +18,8 @@ export class OfferService {
    }
 
 
-  getList(): Observable<Ioffer[]> {
-    return this._http.get<Ioffer[]>(this.api,{headers: this.headers})
+  getList(id: number): Observable<Ioffer[]> {
+    return this._http.get<Ioffer[]>(`${this.api}/${id}/fitter`,{headers: this.headers})
     .catch(this.handleError);
   }
 
