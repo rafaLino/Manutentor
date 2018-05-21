@@ -37,8 +37,7 @@ import { MzSwitchModule } from 'ng2-materialize'
     MzIconMdiModule,
     MzIconModule,
     MzCollapsibleModule,
-    MzSwitchModule,
-
+    MzSwitchModule
   ],
   exports: [
     MzModalModule,
@@ -50,10 +49,9 @@ import { MzSwitchModule } from 'ng2-materialize'
     MzIconModule,
     MzCollapsibleModule,
     MzSwitchModule,
-    loadingComponent
 
   ],
-  declarations: [HomeComponent, TabelaFitterComponent,  loadingComponent, ServicoComponent],
+  declarations: [HomeComponent, TabelaFitterComponent, ServicoComponent],
   providers: [
     FitterService,
     TypeServiceService,

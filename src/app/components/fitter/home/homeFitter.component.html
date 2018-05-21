@@ -1,41 +1,140 @@
-<ul id="slide-out" class="sidenav">
-  <li><div class="user-view">
-    <div class="background">
-      <img src="images/office.jpg">
+<div id="pai" class="col m10 s12 l10">
+  <div class="row">
+    <div class="col m10 s12">
+      <table class="highlight responsive-table centered">
+        <thead>
+          <tr>
+            <th>Serviço</th>
+            <th>Descrição</th>
+            <th>Endereço</th>
+          </tr>
+        </thead>
+        <tbody>
+          <mz-spinner [hidden]="!loading" [color]="'blue'" [size]="'small'">
+          </mz-spinner>
+          <tr class="collection-item avatar" *ngFor='let oferta of ofertas' (click)="SelecionaOferta(oferta, bottomSheetModal);">
+            <td>{{oferta.serviceType.description}}</td>
+            <td>{{oferta.description}}</td>
+            <td>
+              <p>
+                {{oferta.address}}, {{oferta.number}} {{oferta.region}} {{oferta.city}}, {{oferta.state}}
+                <br> {{oferta.cep}}
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <a href="#user"><img class="circle" src="images/yuna.jpg"></a>
-    <a href="#name"><span class="white-text name">John Doe</span></a>
-    <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
-  </div></li>
-  <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-  <li><a href="#!">Second Link</a></li>
-  <li><div class="divider"></div></li>
-  <li><a class="subheader">Subheader</a></li>
-  <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
-</ul>
+  </div>
 
-<div class="col m3 s2 left">
-  <a id="botao" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+  <div class="row" style="margin-top:25%;">
+    <div class="col m10 s12">
+      <mz-spinner [hidden]="!loadingserv" [color]="'blue'" [size]="'small'">
+      </mz-spinner>
+
+      <span *ngIf="!servicos">
+        <i class="material-icons ">error_outline</i> Você não está em nenhum serviço atualmente</span>
+      <ul class="collection with-header">
+        <li class="collection-item" *ngFor='let servico of servicos'>
+          <span>{{servico.serviceType}}</span>
+          <p>{{servico.status}}
+            <br> {{servico.value}}
+            <br> {{servico.comments}}
+          </p>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
-<div id="pai" class="col m7 s7"  align="center">
-      <div class="row">
-            <div class="col offset-m2 m5 s12">
-              <table class="responsive-table">
-                <tr *ngFor='let oferta of ofertas'>
-                  <td>{{oferta.serviceType.description}}</td>
-                  <td>{{oferta.description}}</td>
-                </tr>
-              </table>            
+<mz-modal #bottomSheetModal [fixedFooter]="true" [bottomSheet]="true" [options]="modalOptions">
+  <mz-modal-header>
+    <h4>Oferta</h4>
+  </mz-modal-header>
+  <mz-modal-content style="background-color: azure;">
+    <div class="row">
+      <!-- PRIMEIRA COLUNA -->
+      <div class="col m5 s12">
+        <div class="row">
+          <div class="col m2 s12">
+            <label for="serviceType">Tipo de Serviço</label>
+            <input type="text" value="{{ofertaServico?.serviceType?.description}}" class="form-control" disabled>
+          </div>
+          <div class="col m5 s12">
+            <label for="description">Descrição do Problema</label>
+            <input type="text" value="{{ofertaServico?.description}}" class="form-control" disabled>
           </div>
         </div>
         <div class="row">
-         <table class="responsive-table">
-           <tr *ngFor='let servico of servicos'>
-            <td>{{servico.status}}</td> 
-            <td>{{servico.serviceType}}</td>
-            <td>{{servico.value}}</td>
-            <td>{{servico.comments}}</td>
-           </tr>
-         </table>
+          <div class="col m3 s12">
+            <label>Nome do Solicitante</label>
+            <input type="text" value="{{client?.name}}" class="form-control" disabled>
+          </div>
+          <div class="col m1 s1">
+            <label>Gênero</label>
+            <input type="text" value="{{client?.genre}}" class="form-control" disabled>
+          </div>
+          <div class="col m3 s6">
+            <label>Telefone para contato </label>
+            <input type="text" value="{{client?.cellPhone}}" class="form-control" disabled>
+          </div>
         </div>
-  </div>
+        <div class="row">
+          <div class="col m3 s6">
+            <label>Endereço</label>
+            <input type="text" value="{{ofertaServico?.address}}" class="form-control" disabled>
+          </div>
+          <div class="col m1 s6">
+            <label>Nº</label>
+            <input type="text" value="{{ofertaServico?.number}}" class="form-control" disabled>
+          </div>
+          <div class="col m3 s6">
+            <label>Bairro</label>
+            <input type="text" value="{{ofertaServico?.region}}" class="form-control" disabled>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col m2 s6">
+            <label>Cidade</label>
+            <input type="text" value="{{ofertaServico?.city}}" class="form-control" disabled>
+          </div>
+          <div class="col m1 s6">
+            <label>Estado</label>
+            <input type="text" value="{{ofertaServico?.state}}" class="form-control" disabled>
+          </div>
+          <div class="col m2 s6">
+            <label>CEP</label>
+            <input type="text" value="{{ofertaServico?.cep}}" class="form-control" disabled>
+          </div>
+        </div>
+      </div>
+      <!-- fim primeira-->
+
+      <!-- SEGUNDA COLUNA -->
+      <div class="col m6 s12 border">
+
+        <div class="input-field col m12 s12">
+          <i class="material-icons prefix">mode_edit</i>
+          <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+          <label for="icon_prefix2">Comentário</label>
+        </div>
+        <div class="input-field col m2 s6">
+          <input type="number" name="Valor" min="0" step="0.1" id="valor">
+          <label for="icon_prefix2">Valor</label>
+        </div>
+        <div class="col m6 s2">
+          <label class="right">Tempo Estimado</label>
+        <div class="input-field col m3 s1">
+          <input type="number" placeholder="hora" name="hora" min="0" step="0.1" max="23" id="hora">
+        </div>
+        <div class="input-field col m3 s1">
+          <input type="number" placeholder="minuto" name="min" min="0" step="0.1" max="60" id="min">
+        </div>
+      </div>
+      </div>
+    </div>
+  </mz-modal-content>
+  <mz-modal-footer>
+    <button mz-button [flat]="true" mz-modal-close>Cancelar</button>
+    <button mz-button [flat]="true" mz-modal-close>Enviar</button>
+  </mz-modal-footer>
+</mz-modal>

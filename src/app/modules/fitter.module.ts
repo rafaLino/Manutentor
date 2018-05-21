@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router';
 import { FitterService } from '../services/fitter.service';
 import { OfferService } from '../services/offer.service';
 import { HomeFitterComponent } from '../components/fitter/home/homeFitter.component';
+import { MzModalModule, MzButtonModule, MzSpinnerModule } from 'ng2-materialize';
+import { ClientService } from '../services/client.service';
 
 
 @NgModule({
@@ -11,12 +13,16 @@ import { HomeFitterComponent } from '../components/fitter/home/homeFitter.compon
     CommonModule,
     RouterModule.forChild([
       {path:'manutentor', component: HomeFitterComponent}
-    ])
+    ]),
+    MzModalModule,
+    MzButtonModule,
+    MzSpinnerModule 
   ],
   declarations: [HomeFitterComponent],
   providers: [
     OfferService,
-    FitterService
+    FitterService,
+    ClientService
   ]
 })
 export class FitterModule { }
