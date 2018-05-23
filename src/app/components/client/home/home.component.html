@@ -7,18 +7,19 @@
   <form [formGroup]="form" (ngSubmit)="Send();">
     <div class="row">
       <div class=" col offset-m2 m5 s12">
-        <select id="options-select" class="browser-default col m8" formControlName="ServiceTypeId">
+        <select id="options-select" class="browser-default col m8" formControlName="ServiceTypeId" (change)="onTypeChanged($event)">
           <option value="" disabled selected>--Selecione--</option>
           <option *ngFor='let type of typeServices' [value]='type.id'>{{type.description}}</option>
         </select>
-        
+
       </div>
     </div>
     <div class="row">
       <div class="input-field col offset-m2 m7 s12">
-          <mz-textarea-container>
-        <textarea mz-textarea [label]="'Descrição'" [placeholder]="'Descreva seu Problema'" class="materialize-textarea" id="Description" formControlName="Description" length="250"></textarea>
-        <!-- <label for="Description">Descreva seu Problema</label> -->
+        <mz-textarea-container>
+          <textarea mz-textarea [label]="'Descrição'" [placeholder]="'Descreva seu Problema'" class="materialize-textarea" id="Description"
+            formControlName="Description" length="250"></textarea>
+          <!-- <label for="Description">Descreva seu Problema</label> -->
         </mz-textarea-container>
       </div>
     </div>
@@ -29,60 +30,55 @@
       <div class="col m4 s5">
         <button type="submit" [disabled]="!form.valid" class="waves-effect waves-light btn teal accent-4 white-text">Enviar Pedido</button>
       </div>
-      
+
     </div>
     <div class="row">
       <div class="col offset-m1 m4 s5">
-      <mz-switch-container>
-        <input mz-switch
-          id="switch-id"
-          [off]="''"
-          [on]="'Minha Casa'"
-          [value]='minhacasa'
-          [checked]='true'
-          (change)="Mudou($event)"
-          type="checkbox"
-          >
-      </mz-switch-container>
-    </div>
+        <mz-switch-container>
+          <input mz-switch id="switch-id" [off]="''" [on]="'Minha Casa'" [value]='minhacasa' [checked]='true' (change)="Mudou($event)"
+            type="checkbox">
+        </mz-switch-container>
+      </div>
     </div>
     <!-- ENDERECO -->
-    <div class="col m6 s6" [hidden]="minhacasa" style="margin-left: 17%;">
-    <div class="row" >
-      <div class="input-field col m8 s8">
-        <input id="Address" formControlName="Address" type="text" class="validate">
-        <label for="Address">Endereço</label>
-      </div>
-      <div class="input-field col m2 s3">
-        <input id="Number" formControlName="Number" type="text" class="validate">
-        <label for="Number">Número</label>
-      </div>
-    </div>
     <div class="row">
-      <div class="input-field col m3 s6">
-        <input  id="Region" formControlName="Region" type="text" class="validate">
-        <label for="Region">Bairro</label>
-      </div>
-      <div class="input-field col m3 s3">
-        <input id="city" formControlName="City" type="text" class="validate">
-        <label for="city">Cidade</label>
-      </div>
-      <div class="input-field col m2 s2">
-        <input id="state" formControlName="State" type="text" class="validate">
-        <label for="state">UF</label>
-      </div>
-      <div class="input-field col m3 s4">
-          <input id="CEP" formControlName="CEP" type="text" class="validate">
-          <label for="CEP">CEP</label>
+      <div class="col offset-m2 m7 s7 endereco" [hidden]="minhacasa">
+        <div class="row">
+          <div class="input-field col m8 s8">
+            <input id="Address" formControlName="Address" autocomplete="off" type="text" class="validate">
+            <label for="Address">Endereço</label>
+          </div>
+          <div class="input-field col m2 s3">
+            <input id="Number" formControlName="Number" autocomplete="off" type="text" class="validate">
+            <label for="Number">Número</label>
+          </div>
         </div>
-    </div>
+        <div class="row">
+          <div class="input-field col m3 s6">
+            <input id="Region" formControlName="Region" autocomplete="off" type="text" class="validate">
+            <label for="Region">Bairro</label>
+          </div>
+          <div class="input-field col m3 s3">
+            <input id="city" formControlName="City" autocomplete="off" type="text" class="validate">
+            <label for="city">Cidade</label>
+          </div>
+          <div class="input-field col m2 s2">
+            <input id="state" formControlName="State" autocomplete="off" type="text" class="validate">
+            <label for="state">UF</label>
+          </div>
+          <div class="input-field col m3 s4">
+            <input id="CEP" formControlName="CEP" autocomplete="off" type="text" class="validate">
+            <label for="CEP">CEP</label>
+          </div>
+        </div>
+      </div>
     </div>
   </form>
 </div>
 <div class="row">
   <div class="col offset-m2 m7 s12">
-  <app-tabela-fitter (formEvent)="receiveForm($event)"></app-tabela-fitter>
-</div>
+    <app-tabela-fitter #tabela (formEvent)="receiveForm($event)"></app-tabela-fitter>
+  </div>
 </div>
 
 <!-- MODAL FOTO -->
@@ -113,5 +109,3 @@
 
 
 <!-- SIDENAV -->
-
- 

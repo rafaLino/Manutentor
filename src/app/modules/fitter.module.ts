@@ -6,7 +6,7 @@ import { OfferService } from '../services/offer.service';
 import { HomeFitterComponent } from '../components/fitter/home/homeFitter.component';
 import { MzModalModule, MzButtonModule, MzSpinnerModule } from 'ng2-materialize';
 import { ClientService } from '../services/client.service';
-
+import { MzSidenavModule } from 'ng2-materialize';
 
 @NgModule({
   imports: [
@@ -16,7 +16,9 @@ import { ClientService } from '../services/client.service';
     ]),
     MzModalModule,
     MzButtonModule,
-    MzSpinnerModule 
+    MzSpinnerModule,
+    MzSidenavModule
+
   ],
   declarations: [HomeFitterComponent],
   providers: [

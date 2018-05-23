@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter, ViewChild } from '@angular/core';
 import { IserviceType } from '../../../entities/iservice-type';
 import { Ifitter } from '../../../entities/fitter';
 import { FitterService } from '../../../services/fitter.service';
@@ -10,6 +10,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { OfferService } from '../../../services/offer.service';
 import { MzValidationModule } from 'ng2-materialize';
+import { TabelaFitterComponent } from '../tabela-fitter/tabela-fitter.component';
 
 
 
@@ -19,11 +20,16 @@ import { MzValidationModule } from 'ng2-materialize';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
+  @ViewChild(TabelaFitterComponent) tabela: TabelaFitterComponent;
+
   typeServices: IserviceType[];
   currentUser: Iclient;
   form: FormGroup;
   fitterId: number;
   minhacasa = true;
+  TypeId: number;
+
 
 
   constructor(
@@ -45,7 +51,7 @@ export class HomeComponent implements OnInit {
       FitterId: [this.fitterId, Validators.required],
       ServiceTypeId: ['', Validators.required],
       Description: ['', Validators.required],
-      Address:'',
+      Address: '',
       Number: '',
       Region: '',
       City: '',
@@ -62,8 +68,8 @@ export class HomeComponent implements OnInit {
   }
 
   Send(): void {
-    if(this.minhacasa)
-    this.preencheEndereco();
+    if (this.minhacasa)
+      this.preencheEndereco();
 
     const data = JSON.stringify(this.form.value);
     //this.svcOffer.post(data);
@@ -77,25 +83,25 @@ export class HomeComponent implements OnInit {
   }
 
   Mudou($event) {
-    if(!$event.target.checked){
+    if (!$event.target.checked) {
       this.clearEndereco();
     }
     this.minhacasa = $event.target.checked;
-    
+
   }
 
-  preencheEndereco(){
+  preencheEndereco() {
     this.form.patchValue({
-        Address: this.currentUser.address,
-        Number: this.currentUser.number,
-        Region: this.currentUser.region,
-        City: this.currentUser.city,
-        CEP: this.currentUser.cep,
-        State: this.currentUser.state
+      Address: this.currentUser.address,
+      Number: this.currentUser.number,
+      Region: this.currentUser.region,
+      City: this.currentUser.city,
+      CEP: this.currentUser.cep,
+      State: this.currentUser.state
     });
   }
 
-  clearEndereco(){
+  clearEndereco() {
     this.form.patchValue({
       Address: '',
       Number: '',
@@ -104,6 +110,12 @@ export class HomeComponent implements OnInit {
       CEP: '',
       State: '',
     });
+  }
+
+  onTypeChanged($event: any) {
+    $event.preventDefault;
+    this.tabela.changeList($event.target.value);
+
   }
 
 }

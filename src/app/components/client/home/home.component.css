@@ -19,3 +19,9 @@
     padding: 115px;
     text-align: center;
   }
+
+  .endereco{
+      border: 1px solid grey;
+      border-radius: 4px;
+      box-shadow: 1px 2px 1px black;
+  }

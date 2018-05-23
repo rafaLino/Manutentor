@@ -28,6 +28,18 @@ export class TabelaFitterComponent implements OnInit {
 
   }
 
+  changeList(id: number){
+    this.loading = true;
+  this.svcFitter.getByDisponibilidadeByServiceType(id)
+    .subscribe ( fitters => {
+      this.fitterList = fitters;
+      this.loading = false;
+    });
+  
+  }
+
+
+
   seleciona(fitter: Ifitter){
     this.formEvent.emit(fitter.id);
     
