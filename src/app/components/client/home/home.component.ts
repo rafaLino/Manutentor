@@ -72,7 +72,7 @@ export class HomeComponent implements OnInit {
       this.preencheEndereco();
 
     const data = JSON.stringify(this.form.value);
-    //this.svcOffer.post(data);
+    this.svcOffer.post(data);
     console.log(data.toString());
 
   }

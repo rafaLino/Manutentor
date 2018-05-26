@@ -1,17 +1,17 @@
 <div id="pai" class="col m10 s12 l10">
   <div class="row">
     <div class="col m10 s12">
-      <table class="highlight responsive-table centered">
+      <table class="highlight centered">
         <thead>
           <tr>
             <th>Serviço</th>
             <th>Descrição</th>
             <th>Endereço</th>
-            <th>
+            <!-- <th>
               <button mz-button (click)="sidenav.opened = !sidenav.opened" id="sidenav-btn">
                 Open
               </button>
-            </th>
+            </th> -->
           </tr>
         </thead>
         <tbody>
@@ -52,11 +52,7 @@
   </div>
 </div>
 
-<mz-sidenav #sidenav [id]="'sidenav-demo'"
-[collapseButtonId]="'sidenav-btn'"
-[fixed]="true"
-[draggable]="false"
->
+<!-- <mz-sidenav #sidenav [id]="'sidenav-demo'" [collapseButtonId]="'sidenav-btn'" [fixed]="true" [draggable]="false">
   <mz-sidenav-header>
     Sidenav header
   </mz-sidenav-header>
@@ -72,7 +68,7 @@
   <mz-sidenav-link>
     <a href="#" class="waves-effect">Second Link With Waves</a>
   </mz-sidenav-link>
-</mz-sidenav>
+</mz-sidenav> -->
 
 
 
@@ -84,88 +80,85 @@
   <mz-modal-content style="background-color: azure;">
     <div class="row">
       <!-- PRIMEIRA COLUNA -->
-      <div class="col m5 s12">
-        <div class="row">
-          <div class="col m2 s12">
-            <label for="serviceType">Tipo de Serviço</label>
-            <input type="text" value="{{ofertaServico?.serviceType?.description}}" class="form-control" readonly>
+      <form [formGroup]="form" >
+        <div class="col m5 s12">
+          <div class="row">
+            <div class="col m2 s12">
+              <label for="serviceType">Tipo de Serviço</label>
+              <input type="text" value="{{ofertaServico?.serviceType?.description}}" class="form-control" readonly>
+            </div>
+            <div class="col m5 s12">
+              <label for="description">Descrição do Problema</label>
+              <input type="text" value="{{ofertaServico?.description}}" class="form-control" readonly>
+            </div>
           </div>
-          <div class="col m5 s12">
-            <label for="description">Descrição do Problema</label>
-            <input type="text" value="{{ofertaServico?.description}}" class="form-control" readonly>
+          <div class="row">
+            <div class="col m3 s12">
+              <label>Nome do Solicitante</label>
+              <input type="text" value="{{client?.name}}" class="form-control" readonly>
+            </div>
+            <div class="col m1 s2">
+              <label>Gênero</label>
+              <input type="text" value="{{client?.genre}}" class="form-control" readonly>
+            </div>
+            <div class="col m3 s6">
+              <label>Telefone para contato </label>
+              <input type="text" value="{{client?.cellPhone}}" class="form-control" disabled>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col m3 s6">
+              <label>Endereço</label>
+              <input type="text" formControlName="Address" value="{{ofertaServico?.address}}" class="form-control" readonly>
+            </div>
+            <div class="col m1 s6">
+              <label>Nº</label>
+              <input type="text" formControlName="Number" value="{{ofertaServico?.number}}" class="form-control" readonly>
+            </div>
+            <div class="col m3 s6">
+              <label>Bairro</label>
+              <input type="text" formControlName="Region" value="{{ofertaServico?.region}}" class="form-control" readonly>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col m2 s6">
+              <label>Cidade</label>
+              <input type="text" formControlName="City" value="{{ofertaServico?.city}}" class="form-control" readonly>
+            </div>
+            <div class="col m1 s6">
+              <label>Estado</label>
+              <input type="text" formControlName="State" value="{{ofertaServico?.state}}" class="form-control" readonly>
+            </div>
+            <div class="col m2 s6">
+              <label>CEP</label>
+              <input type="text" formControlName="CEP" value="{{ofertaServico?.cep}}" class="form-control" readonly>
+            </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col m3 s12">
-            <label>Nome do Solicitante</label>
-            <input type="text" value="{{client?.name}}" class="form-control" readonly>
-          </div>
-          <div class="col m1 s1">
-            <label>Gênero</label>
-            <input type="text" value="{{client?.genre}}" class="form-control" readonly>
-          </div>
-          <div class="col m3 s6">
-            <label>Telefone para contato </label>
-            <input type="text" value="{{client?.cellPhone}}" class="form-control" disabled>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col m3 s6">
-            <label>Endereço</label>
-            <input type="text" value="{{ofertaServico?.address}}" class="form-control" readonly>
-          </div>
-          <div class="col m1 s6">
-            <label>Nº</label>
-            <input type="text" value="{{ofertaServico?.number}}" class="form-control" readonly>
-          </div>
-          <div class="col m3 s6">
-            <label>Bairro</label>
-            <input type="text" value="{{ofertaServico?.region}}" class="form-control" readonly>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col m2 s6">
-            <label>Cidade</label>
-            <input type="text" value="{{ofertaServico?.city}}" class="form-control" readonly>
-          </div>
-          <div class="col m1 s6">
-            <label>Estado</label>
-            <input type="text" value="{{ofertaServico?.state}}" class="form-control" readonly>
-          </div>
-          <div class="col m2 s6">
-            <label>CEP</label>
-            <input type="text" value="{{ofertaServico?.cep}}" class="form-control" readonly>
-          </div>
-        </div>
-      </div>
-      <!-- fim primeira-->
+        <!-- fim primeira-->
 
-      <!-- SEGUNDA COLUNA -->
-      <div class="col m6 s12 border">
+        <!-- SEGUNDA COLUNA -->
+        <div class="col m6 s12 border">
 
-        <div class="input-field col m12 s12">
-          <i class="material-icons prefix">mode_edit</i>
-          <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-          <label for="icon_prefix2">Comentário</label>
-        </div>
-        <div class="input-field col m2 s6">
-          <input type="number" name="Valor" min="0" step="0.1" id="valor">
-          <label for="icon_prefix2">Valor</label>
-        </div>
-        <div class="col m6 s2">
-          <label class="center-align">Tempo Estimado</label>
-          <div class="input-field col m3 s1">
-            <input type="number" placeholder="hora" name="hora" min="0" step="0.1" max="23" id="hora">
+          <div class="input-field col m12 s12">
+            <i class="material-icons prefix">mode_edit</i>
+            <textarea id="icon_prefix2" formControlName="Comments" class="materialize-textarea"></textarea>
+            <label for="icon_prefix2">Comentário</label>
           </div>
-          <div class="input-field col m3 s1">
-            <input type="number" placeholder="minuto" name="min" min="0" step="0.1" max="60" id="min">
+          <div class="input-field col m2 s6">
+            <input type="number" formControlName="Value" min="0" step="0.1" id="valor">
+            <label for="Value">Valor</label>
+          </div>
+          <div class="input-field col m6 s6">
+            <input mz-input mz-validation required type="text" placeholder="__:__ (hora/minuto)" formControlName="ApproximateTime" id="tempo">
+            <label for="ApproximateTime">Tempo Estimado</label>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   </mz-modal-content>
   <mz-modal-footer>
     <button mz-button [flat]="true" mz-modal-close>Cancelar</button>
-    <button mz-button [flat]="true" mz-modal-close>Enviar</button>
+    <button mz-button type="button" [flat]="true" [disabled]="!form.valid" (click)="Salvar();">Enviar</button>
   </mz-modal-footer>
 </mz-modal>
