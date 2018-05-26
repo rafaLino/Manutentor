@@ -6,11 +6,13 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class OfferService {
 
-  private api = 'http://localhost:6336/api/Offer';
+  //private api = 'http://localhost:6336/api/Offer';
+  private api = environment.api + "Offer";
   private headers: HttpHeaders;
   constructor(private _http: HttpClient) {
     let _headers = new HttpHeaders();

@@ -7,10 +7,12 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import { Iclient } from '../entities/client';
 import { Ifitter } from '../entities/fitter';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class LoginService {
-private api = 'http://localhost:6336/api/Login';
+//private api = 'http://localhost:6336/api/Login';
+private api = environment.api + 'Login';
 private headers: HttpHeaders;
   constructor(private _http: HttpClient) {
     let _headers = new HttpHeaders();

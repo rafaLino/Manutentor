@@ -7,10 +7,12 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
+import { environment } from '../../environments/environment';
 @Injectable()
 export class FitterService {
 
-  private api = 'http://localhost:6336/api/Fitter';
+  //private api = 'http://localhost:6336/api/Fitter';
+  private api = environment.api + 'Fitter';
   private headers: HttpHeaders;
   constructor(private _http: HttpClient) {
     let _headers = new HttpHeaders();

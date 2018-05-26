@@ -77,7 +77,7 @@
 
 
 
-<mz-modal #bottomSheetModal [fixedFooter]="true" [bottomSheet]="true" [options]="modalOptions">
+<mz-modal #bottomSheetModal [fixedFooter]="true" [bottomSheet]="false" [options]="modalOptions">
   <mz-modal-header>
     <h4>Oferta</h4>
   </mz-modal-header>
@@ -88,21 +88,21 @@
         <div class="row">
           <div class="col m2 s12">
             <label for="serviceType">Tipo de Serviço</label>
-            <input type="text" value="{{ofertaServico?.serviceType?.description}}" class="form-control" disabled>
+            <input type="text" value="{{ofertaServico?.serviceType?.description}}" class="form-control" readonly>
           </div>
           <div class="col m5 s12">
             <label for="description">Descrição do Problema</label>
-            <input type="text" value="{{ofertaServico?.description}}" class="form-control" disabled>
+            <input type="text" value="{{ofertaServico?.description}}" class="form-control" readonly>
           </div>
         </div>
         <div class="row">
           <div class="col m3 s12">
             <label>Nome do Solicitante</label>
-            <input type="text" value="{{client?.name}}" class="form-control" disabled>
+            <input type="text" value="{{client?.name}}" class="form-control" readonly>
           </div>
           <div class="col m1 s1">
             <label>Gênero</label>
-            <input type="text" value="{{client?.genre}}" class="form-control" disabled>
+            <input type="text" value="{{client?.genre}}" class="form-control" readonly>
           </div>
           <div class="col m3 s6">
             <label>Telefone para contato </label>
@@ -112,29 +112,29 @@
         <div class="row">
           <div class="col m3 s6">
             <label>Endereço</label>
-            <input type="text" value="{{ofertaServico?.address}}" class="form-control" disabled>
+            <input type="text" value="{{ofertaServico?.address}}" class="form-control" readonly>
           </div>
           <div class="col m1 s6">
             <label>Nº</label>
-            <input type="text" value="{{ofertaServico?.number}}" class="form-control" disabled>
+            <input type="text" value="{{ofertaServico?.number}}" class="form-control" readonly>
           </div>
           <div class="col m3 s6">
             <label>Bairro</label>
-            <input type="text" value="{{ofertaServico?.region}}" class="form-control" disabled>
+            <input type="text" value="{{ofertaServico?.region}}" class="form-control" readonly>
           </div>
         </div>
         <div class="row">
           <div class="col m2 s6">
             <label>Cidade</label>
-            <input type="text" value="{{ofertaServico?.city}}" class="form-control" disabled>
+            <input type="text" value="{{ofertaServico?.city}}" class="form-control" readonly>
           </div>
           <div class="col m1 s6">
             <label>Estado</label>
-            <input type="text" value="{{ofertaServico?.state}}" class="form-control" disabled>
+            <input type="text" value="{{ofertaServico?.state}}" class="form-control" readonly>
           </div>
           <div class="col m2 s6">
             <label>CEP</label>
-            <input type="text" value="{{ofertaServico?.cep}}" class="form-control" disabled>
+            <input type="text" value="{{ofertaServico?.cep}}" class="form-control" readonly>
           </div>
         </div>
       </div>

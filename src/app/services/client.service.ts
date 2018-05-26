@@ -7,11 +7,13 @@ import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import { Iclient } from '../entities/client';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class ClientService {
 
-  private api = 'http://localhost:6336/api/Client';
+  //private api = 'http://localhost:6336/api/Client';
+  private api = environment.api + 'Client';
   private headers: HttpHeaders;
 constructor(private _http: HttpClient) {
   let _headers = new HttpHeaders();

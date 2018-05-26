@@ -113,7 +113,7 @@ export class HomeComponent implements OnInit {
   }
 
   onTypeChanged($event: any) {
-    $event.preventDefault;
+    $event.preventDefault();
     this.tabela.changeList($event.target.value);
 
   }
