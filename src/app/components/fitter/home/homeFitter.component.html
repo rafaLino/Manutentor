@@ -26,6 +26,7 @@
                 <br> {{oferta.cep}}
               </p>
             </td>
+            <td *ngIf="oferta.status==5">Aguardando Aprovação</td>
           </tr>
         </tbody>
       </table>
@@ -80,7 +81,7 @@
   <mz-modal-content style="background-color: azure;">
     <div class="row">
       <!-- PRIMEIRA COLUNA -->
-      <form [formGroup]="form" >
+      <form [formGroup]="form">
         <div class="col m5 s12">
           <div class="row">
             <div class="col m2 s12">
@@ -150,7 +151,7 @@
             <label for="Value">Valor</label>
           </div>
           <div class="input-field col m6 s6">
-            <input mz-input mz-validation required type="text" placeholder="__:__ (hora/minuto)" formControlName="ApproximateTime" id="tempo">
+            <input mz-input mz-validation type="text" placeholder="__:__ (hora/minuto)" formControlName="ApproximateTime" id="tempo">
             <label for="ApproximateTime">Tempo Estimado</label>
           </div>
         </div>
@@ -160,5 +161,7 @@
   <mz-modal-footer>
     <button mz-button [flat]="true" mz-modal-close>Cancelar</button>
     <button mz-button type="button" [flat]="true" [disabled]="!form.valid" (click)="Salvar();">Enviar</button>
+    <img *ngIf="loadingForm" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+    />
   </mz-modal-footer>
 </mz-modal>

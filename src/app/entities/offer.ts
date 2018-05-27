@@ -5,6 +5,7 @@ id: number;
 clientId: number;
 fitter: number;
 serviceType: IserviceType;
+status: number;
 stype: number;
 description: string;
 address: string;

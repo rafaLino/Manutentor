@@ -24,6 +24,7 @@ export class HomeFitterComponent implements OnInit {
   ofertas: Ioffer[];
   loading = true;
   loadingserv = true;
+  loadingForm = false;
   private currentUser: Ifitter;
   private ofertaServico: Ioffer;
   private client: Iclient;
@@ -43,14 +44,15 @@ export class HomeFitterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.loading = this.carregarTabelas();
+    this.loadOffer();
+    this.loadService();
 
     this.form = this.formBuilder.group({
       OfferId: '',
       ServiceTypeId: '',
       ApproximateTime: ['', Validators.compose([
         Validators.required,
-        Validators.pattern(/^(\d{0,23}):(\d{0,59})$/),
+        Validators.pattern(/^(\d{0,23}):?(\d{0,59})$/),
       ]),
       ],
       Value: ['', Validators.required],
@@ -63,26 +65,32 @@ export class HomeFitterComponent implements OnInit {
       State: '',
     });
   }
-  private carregarTabelas(): boolean {
-    let load = true;
-    this.offerService.getList(this.currentUser.id)
-      .subscribe(offers => {
-        this.ofertas = offers;
-        this.loading = false;
-      });
 
-    this.fitterservice.getServico(this.currentUser.id)
-      .subscribe(currentServico => {
-        this.servicos = currentServico;
-        this.loadingserv = false;
-      });
-    return load;
-  }
+private loadOffer(){
 
+  this.offerService.getList(this.currentUser.id)
+  .subscribe(offers => {
+    this.ofertas = offers;
+    this.loading = false;
+  });
+}
 
+private loadService(){
+
+  this.fitterservice.getServico(this.currentUser.id)
+  .subscribe(currentServico => {
+    this.servicos = currentServico;
+    this.loadingserv = false;
+  });
+}
 
   SelecionaOferta(oferta: Ioffer, modal) {
+    if(oferta.status == 5){
+      alert("aguardando aprovação");
+      return;
+    }
     this.ofertaServico = oferta;
+    this.modal = modal;
     this.clientService.get(this.ofertaServico.clientId).subscribe(cliente => {
       this.client = cliente;
     });
@@ -94,6 +102,7 @@ export class HomeFitterComponent implements OnInit {
   private preencheForm() {
     this.form.patchValue({
       OfferId: this.ofertaServico.id,
+      ClientId: this.ofertaServico.clientId,
       ServiceTypeId: this.ofertaServico.serviceType.id,
       Address: this.ofertaServico.address,
       Number: this.ofertaServico.number,
@@ -106,10 +115,12 @@ export class HomeFitterComponent implements OnInit {
 
   Salvar() {
     const data = JSON.stringify(this.form.value);
+    this.loadingForm = true;
     this.svc.post(data).subscribe(res => {
-      console.log(res);
-    }
-    );
+      this.loadingForm = false;
+      this.loadOffer();
+      this.modal.close();
+    });
     //console.log(data.toString());
   }
 }

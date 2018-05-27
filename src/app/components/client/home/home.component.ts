@@ -9,8 +9,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { OfferService } from '../../../services/offer.service';
-import { MzValidationModule } from 'ng2-materialize';
+import { MzValidationModule, MzModalService } from 'ng2-materialize';
 import { TabelaFitterComponent } from '../tabela-fitter/tabela-fitter.component';
+import { ServiceService } from '../../../services/service.service';
+import { AlertModalComponent } from '../alert-modal/alertModal.component';
+import { Options } from 'selenium-webdriver/firefox';
 
 
 
@@ -35,14 +38,15 @@ export class HomeComponent implements OnInit {
   constructor(
     private svcTypeService: TypeServiceService,
     private svcOffer: OfferService,
+    private servico  :ServiceService,
     private fb: FormBuilder,
     private route: Router,
-    private activeRoute: ActivatedRoute
-
+    private activeRoute: ActivatedRoute,
+    private modalAlert : MzModalService
+    
 
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-
   }
   ngOnInit() {
 
@@ -65,6 +69,20 @@ export class HomeComponent implements OnInit {
         this.typeServices = types;
       });
 
+    
+
+      this.loadServico(this.currentUser.id);
+
+  }
+
+  loadServico(id: number){
+    this.servico.getByClient(id).subscribe(res => {
+      if(res != undefined){
+        console.log(res);
+
+          this.modalAlert.open(AlertModalComponent,{dataBiding: res} );
+      }
+  });
   }
 
   Send(): void {

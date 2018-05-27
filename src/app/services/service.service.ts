@@ -49,8 +49,13 @@ getByStatusId(id: number): Observable<Iservice[]> {
   .catch(this.handleError);
 }
 
-getByStatus(id: string): Observable<Iservice[]> {
+getByStatus(id: number): Observable<Iservice[]> {
   return this._http.get<Iservice[]>(`${this.api}/status/${id}`,{headers: this.headers})
+  .catch(this.handleError);
+}
+
+getByClient(id :number): Observable<Iservice[]>{
+  return this._http.get<Iservice[]>(`${this.api}/${id}/client`,{headers: this.headers})
   .catch(this.handleError);
 }
 

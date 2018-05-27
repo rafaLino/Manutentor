@@ -13,7 +13,7 @@ import { loadingComponent } from '../components/shared/loading.component';
 import { ServicoComponent } from '../components/client/servico/servico.component';
 import { OfferService } from '../services/offer.service';
 import { AppComponent } from '../app.component';
-import { MzModalModule } from 'ng2-materialize';
+import { MzModalModule, MzModalService, MzCollectionModule } from 'ng2-materialize';
 import { MzButtonModule } from 'ng2-materialize';
 import { MzSelectModule } from 'ng2-materialize';
 import { MzTextareaModule } from 'ng2-materialize';
@@ -21,11 +21,12 @@ import { MzSidenavModule } from 'ng2-materialize';
 import { MzIconModule, MzIconMdiModule } from 'ng2-materialize';
 import { MzCollapsibleModule } from 'ng2-materialize';
 import { MzSwitchModule } from 'ng2-materialize'
+import { AlertModalComponent } from '../components/client/alert-modal/alertModal.component';
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild([
-       {path: 'home', component: HomeComponent, resolve: {fitter: TabelaFitterResolverService}},       
+       {path: 'home', component: HomeComponent /*, resolve: {fitter: TabelaFitterResolverService}*/ },       
     ]),
     ReactiveFormsModule,
     SharedModule,
@@ -37,7 +38,8 @@ import { MzSwitchModule } from 'ng2-materialize'
     MzIconMdiModule,
     MzIconModule,
     MzCollapsibleModule,
-    MzSwitchModule
+    MzSwitchModule,
+    MzCollectionModule 
   ],
   exports: [
     MzModalModule,
@@ -49,14 +51,20 @@ import { MzSwitchModule } from 'ng2-materialize'
     MzIconModule,
     MzCollapsibleModule,
     MzSwitchModule,
+    MzCollectionModule 
+    
 
   ],
-  declarations: [HomeComponent, TabelaFitterComponent, ServicoComponent],
+  declarations: [HomeComponent, TabelaFitterComponent, ServicoComponent, AlertModalComponent],
   providers: [
     FitterService,
     TypeServiceService,
     TabelaFitterResolverService,
-    OfferService 
+    OfferService,
+    MzModalService
+  ],
+  entryComponents:[
+    AlertModalComponent
   ],
   bootstrap: [AppComponent]
 })
