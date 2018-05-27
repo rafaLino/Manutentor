@@ -1,0 +1,21 @@
+<!-- MODAL ALERTA -->
+
+<mz-modal #alertModal [fixedFooter]="true" [bottomSheet]="false" [options]="Options">
+  <mz-modal-header>
+    <h4>Modal Title</h4>
+  </mz-modal-header>
+  <mz-modal-content>
+    <mz-collection>
+      <mz-collection-item *ngFor="let servico of servicos">
+        {{servico?.comments}}
+        <a href="#!" mz-secondary-content>
+          <i mz-icon-mdi [icon]="'send'"></i>
+        </a>
+      </mz-collection-item>
+    </mz-collection>
+  </mz-modal-content>
+  <mz-modal-footer>
+    <button mz-button [flat]="true" mz-modal-close>Disagree</button>
+    <button mz-button [flat]="true" mz-modal-close>Agree</button>
+  </mz-modal-footer>
+</mz-modal>
