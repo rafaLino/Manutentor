@@ -8,6 +8,7 @@ serviceTypeId: number;
 approximateTime: string;
 status: number;
 clientId: number;
+fitterId: number;
 offer: Ioffer;
 offerId: number;
 value: number;

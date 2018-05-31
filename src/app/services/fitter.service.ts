@@ -69,23 +69,6 @@ setDisponibilidade(id: number) {
   .catch(this.handleError);
 }
 
-addServico(fitterId: number, serviceId: number) {
-
-  this._http.post(`${this.api}/servico`, [fitterId, serviceId],{headers: this.headers})
-  .catch(this.handleError);
-}
-
-removeServico(fitterId: number, serviceId: number) {
-  this._http.delete(`${this.api}/servico/${fitterId}/${serviceId}`,{headers: this.headers})
-  .catch(this.handleError);
-}
-
-getServico(fitterId: number): Observable<Iservice[]> {
-  return this._http.get<Iservice[]>(`${this.api}/servico/${fitterId}`,{headers: this.headers})
-  .catch(this.handleError);
-}
-
-
 getRatingList(): Observable<any> {
   return this._http.get(`${this.api}/rating`,{headers: this.headers})
   .catch(this.handleError);

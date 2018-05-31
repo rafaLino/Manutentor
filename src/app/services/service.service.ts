@@ -63,6 +63,11 @@ getByClient(id :number): Observable<Iservice[]>{
   .catch(this.handleError);
 }
 
+getByFitter(id :number): Observable<Iservice>{
+  return this._http.get<Iservice>(`${this.api}/${id}/fitter`,{headers: this.headers})
+  .catch(this.handleError);
+}
+
 setStatus(id: number, status: number) {
   return this._http.put(`${this.api}/${id}/status`, status,{headers: this.headers})
   .catch(this.handleError);

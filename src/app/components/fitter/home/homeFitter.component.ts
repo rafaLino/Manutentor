@@ -21,7 +21,7 @@ export class HomeFitterComponent implements OnInit {
 
   form: FormGroup;
   ofertas: Ioffer[];
-  private servicos: Iservice[];
+  private servico: Iservice;
   loading = true;
   loadingserv = true;
   loadingForm = false;
@@ -35,7 +35,7 @@ export class HomeFitterComponent implements OnInit {
 
   constructor(
     private offerService: OfferService,
-    private fitterservice: FitterService,
+    //private fitterservice: FitterService,
     private clientService: ClientService,
     private formBuilder: FormBuilder,
     private svc: ServiceService
@@ -50,6 +50,7 @@ export class HomeFitterComponent implements OnInit {
     this.form = this.formBuilder.group({
       OfferId: '',
       ServiceTypeId: '',
+      FitterId: this.currentUser.id,
       ApproximateTime: ['', Validators.compose([
         Validators.required,
         Validators.pattern(/^(\d{0,23}):?(\d{0,59})$/),
@@ -78,9 +79,9 @@ private loadOffer(){
 private loadService(){
    let id = this.currentUser.id;
    
-  this.fitterservice.getServico(id)
-  .subscribe(currentServicos => {
-    this.servicos = currentServicos;    
+  this.svc.getByFitter(id)
+  .subscribe(currentServico => {
+    this.servico = currentServico;    
     this.loadingserv = false;
   });
 }
