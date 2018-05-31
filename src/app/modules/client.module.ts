@@ -13,7 +13,7 @@ import { loadingComponent } from '../components/shared/loading.component';
 import { ServicoComponent } from '../components/client/servico/servico.component';
 import { OfferService } from '../services/offer.service';
 import { AppComponent } from '../app.component';
-import { MzModalModule, MzModalService, MzCollectionModule } from 'ng2-materialize';
+import { MzModalModule, MzModalService, MzCollectionModule, MzSpinnerModule } from 'ng2-materialize';
 import { MzButtonModule } from 'ng2-materialize';
 import { MzSelectModule } from 'ng2-materialize';
 import { MzTextareaModule } from 'ng2-materialize';
@@ -39,7 +39,8 @@ import { AlertModalComponent } from '../components/client/alert-modal/alertModal
     MzIconModule,
     MzCollapsibleModule,
     MzSwitchModule,
-    MzCollectionModule 
+    MzCollectionModule,
+    MzSpinnerModule
   ],
   exports: [
     MzModalModule,
@@ -51,7 +52,8 @@ import { AlertModalComponent } from '../components/client/alert-modal/alertModal
     MzIconModule,
     MzCollapsibleModule,
     MzSwitchModule,
-    MzCollectionModule 
+    MzCollectionModule,
+    MzSpinnerModule
     
 
   ],

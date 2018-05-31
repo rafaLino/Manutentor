@@ -38,11 +38,15 @@ post(service): Observable<Iservice> {
  .catch(this.handleError);
 }
 
-put(id: number, service): Observable<Iservice> {
+put(id: number, service: string): Observable<Iservice> {
   return this._http.put(`${this.api}/${id}`, service,{headers: this.headers})
   .catch(this.handleError);
 }
 
+confirm(id: number, service: string): Observable<Iservice> {
+  return this._http.put(`${this.api}/${id}/confirm`, service,{headers: this.headers})
+  .catch(this.handleError);
+}
 
 getByStatusId(id: number): Observable<Iservice[]> {
   return this._http.get<Iservice[]>(`${this.api}/${id}/status`,{headers: this.headers})

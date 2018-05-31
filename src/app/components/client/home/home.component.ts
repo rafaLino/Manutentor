@@ -38,12 +38,13 @@ export class HomeComponent implements OnInit {
   constructor(
     private svcTypeService: TypeServiceService,
     private svcOffer: OfferService,
-    private servico  :ServiceService,
+    private servico: ServiceService,
     private fb: FormBuilder,
     private route: Router,
     private activeRoute: ActivatedRoute,
-    private modalAlert : MzModalService
-    
+    private modalAlert: MzModalService
+
+
 
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -69,20 +70,18 @@ export class HomeComponent implements OnInit {
         this.typeServices = types;
       });
 
-    
 
-      this.loadServico(this.currentUser.id);
+
+    this.loadServico(this.currentUser.id);
 
   }
 
-  loadServico(id: number){
-    this.servico.getByClient(id).subscribe(res => {
-      if(res != undefined){
-        console.log(res);
-
-          this.modalAlert.open(AlertModalComponent,{dataBiding: res} );
+  loadServico(id: number) {
+    this.servico.getByClient(id).subscribe(res => {      
+      if (res.length > 0  ) {
+        this.modalAlert.open(AlertModalComponent, { dataBiding: res });
       }
-  });
+    });
   }
 
   Send(): void {

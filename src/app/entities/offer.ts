@@ -1,12 +1,14 @@
 import { IserviceType } from "./iservice-type";
+import { Ifitter } from "./fitter";
 
 export interface Ioffer {
 id: number;
 clientId: number;
-fitter: number;
+fitterId: number;
+fitter: Ifitter;
 serviceType: IserviceType;
 status: number;
-stype: number;
+sType: number;
 description: string;
 address: string;
 number: string;

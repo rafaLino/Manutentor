@@ -10,7 +10,7 @@ import { Iclient } from '../../../entities/client';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { validateConfig } from '@angular/router/src/config';
 import { ServiceService } from '../../../services/service.service';
-
+import { Status } from '../../shared/status.enum';
 
 
 @Component({
@@ -20,8 +20,8 @@ import { ServiceService } from '../../../services/service.service';
 export class HomeFitterComponent implements OnInit {
 
   form: FormGroup;
-  servicos: Iservice[];
   ofertas: Ioffer[];
+  private servicos: Iservice[];
   loading = true;
   loadingserv = true;
   loadingForm = false;
@@ -76,16 +76,17 @@ private loadOffer(){
 }
 
 private loadService(){
-
-  this.fitterservice.getServico(this.currentUser.id)
-  .subscribe(currentServico => {
-    this.servicos = currentServico;
+   let id = this.currentUser.id;
+   
+  this.fitterservice.getServico(id)
+  .subscribe(currentServicos => {
+    this.servicos = currentServicos;    
     this.loadingserv = false;
   });
 }
 
   SelecionaOferta(oferta: Ioffer, modal) {
-    if(oferta.status == 5){
+    if(oferta.status == Status.Aguardando){
       alert("aguardando aprovação");
       return;
     }

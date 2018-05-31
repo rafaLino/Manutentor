@@ -2,20 +2,63 @@
 
 <mz-modal #alertModal [fixedFooter]="true" [bottomSheet]="false" [options]="Options">
   <mz-modal-header>
+    <button mz-button [flat]="true" mz-modal-close class="right">
+      <i class="material-icons">close</i>
+    </button>
+    <button [hidden]='active' (click)="voltar()" class="btn btn-waves left">
+      <i class="material-icons">close</i>Voltar
+    </button>
     <h4>Modal Title</h4>
   </mz-modal-header>
   <mz-modal-content>
-    <mz-collection>
-      <mz-collection-item *ngFor="let servico of servicos">
-        {{servico?.comments}}
+    <mz-collection [hidden]='!active'>
+      <mz-collection-item *ngFor="let servico of servicos" (click)='seleciona(servico);'>
+        <p>
+          {{servico?.offer?.fitter?.name}}
+          <br> {{servico?.offer?.description}}
+          <br> {{servico?.comments}}
+          <br> {{servico?.approximateTime}}
+        </p>
+
         <a href="#!" mz-secondary-content>
           <i mz-icon-mdi [icon]="'send'"></i>
         </a>
       </mz-collection-item>
     </mz-collection>
+    <div class="col m10 s12" [hidden]='active'>
+      <div class="col m10 s12">
+        <input value="{{currentService?.approximateTime}}">
+      </div>
+      <div class="col m10 s12">
+        <input value="{{currentService?.value}}">
+      </div>
+      <div class="col m10 s12">
+        <input value="{{currentService?.comments}}">
+      </div>
+      <div class="col m10 s12">
+        <input value="{{currentService?.address}}">
+      </div>
+      <div class="col m10 s12">
+        <input value="{{currentService?.number}}">
+      </div>
+      <div class="col m10 s12">
+        <input value="{{currentService?.region}}">
+      </div>
+      <div class="col m10 s12">
+        <input value="{{currentService?.city}}">
+      </div>
+      <div class="col m10 s12">
+        <input value="{{currentService?.cep}}">
+      </div>
+      <div class="col m10 s12">
+        <input value="{{currentService?.state}}">
+      </div>
+    </div>
   </mz-modal-content>
-  <mz-modal-footer>
+  <mz-modal-footer [hidden]='active'>
     <button mz-button [flat]="true" mz-modal-close>Disagree</button>
-    <button mz-button [flat]="true" mz-modal-close>Agree</button>
+    <button mz-button [flat]="true" (click)="confirmar()">Confirmar</button>
+    <mz-spinner [hidden]="!loading" [color]="'blue'" [size]="'small'">
+      </mz-spinner>
   </mz-modal-footer>
 </mz-modal>

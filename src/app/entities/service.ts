@@ -4,6 +4,7 @@ import { Ioffer } from "./offer";
 export interface Iservice {
 id: number;
 serviceType: string;
+serviceTypeId: number;
 approximateTime: string;
 status: number;
 clientId: number;

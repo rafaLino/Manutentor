@@ -42,10 +42,10 @@
         <i class="material-icons ">error_outline</i> Você não está em nenhum serviço atualmente</span>
       <ul class="collection with-header">
         <li class="collection-item" *ngFor='let servico of servicos'>
-          <span>{{servico.serviceType}}</span>
-          <p>{{servico.status}}
-            <br> {{servico.value}}
-            <br> {{servico.comments}}
+          <span>{{servico?.serviceType}}</span>
+          <p>{{servico?.status}}
+            <br> {{servico?.value}}
+            <br> {{servico?.comments}}
           </p>
         </li>
       </ul>
