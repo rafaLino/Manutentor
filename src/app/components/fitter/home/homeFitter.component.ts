@@ -118,8 +118,10 @@ private loadService(){
   Salvar() {
     const data = JSON.stringify(this.form.value);
     this.loadingForm = true;
+    console.log(data);
     this.svc.post(data).subscribe(res => {
       this.loadingForm = false;
+      console.log(res);
       this.loadOffer();
       this.modal.close();
     });

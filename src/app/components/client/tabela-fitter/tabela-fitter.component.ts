@@ -13,42 +13,45 @@ export class TabelaFitterComponent implements OnInit {
   fitterList: Ifitter[];
   loading = true;
   @Output() formEvent = new EventEmitter<number>();
-  
+
   constructor(
-  private svcFitter: FitterService,
-  private route: ActivatedRoute
-) { }
+    private svcFitter: FitterService,
+    private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
-   this.svcFitter.getByDisponibilidade()
-    .subscribe( fitters =>{
-      this.fitterList = fitters;
-      this.loading = false;
-    });
+    this.svcFitter.getList()
+      .subscribe(fitters => {
+        this.fitterList = fitters;
+        this.loading = false;
+      });
 
   }
 
-  changeList(id: number){
+  changeList(id: number) {
     this.loading = true;
-  this.svcFitter.getByDisponibilidadeByServiceType(id)
-    .subscribe ( fitters => {
-      this.fitterList = fitters;
-      this.loading = false;
-    });
-  
+    this.svcFitter.getByServiceType(id)
+      .subscribe(fitters => {
+        this.fitterList = fitters;
+        this.loading = false;
+      });
+
   }
 
 
 
-  seleciona(fitter: Ifitter){
-    this.formEvent.emit(fitter.id);
-    
+  seleciona(fitter: Ifitter) {
+    if (!fitter.availability)
+      alert("Manutentor Indisponível");
+    else
+      this.formEvent.emit(fitter.id);
+
   }
 
 
   onRatingClicked(message: string): void {
     console.log(message);
-}
+  }
 
-  
+
 }

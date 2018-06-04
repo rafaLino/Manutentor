@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { StarComponent } from './star.component';
 import { FormsModule } from '@angular/forms';
 import { loadingComponent } from './loading.component';
+import { ConvertToSpacesPipe } from './convert-to-spaces.pipe';
 
 @NgModule({
   imports: [
@@ -10,7 +11,8 @@ import { loadingComponent } from './loading.component';
   ],
   declarations: [
     StarComponent,
-    loadingComponent
+    loadingComponent,
+    ConvertToSpacesPipe
   ],
   exports: [
     StarComponent,

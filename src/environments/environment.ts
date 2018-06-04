@@ -6,4 +6,5 @@
 export const environment = {
   production: false,
   api: 'http://localhost:6336/api/'
+  //api: 'http://fatectg.azurewebsites.net/api/'
 };

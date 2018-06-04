@@ -55,7 +55,7 @@ getByDisponibilidadeByServiceType(id: number): Observable<Ifitter[]> {
 }
 
 getByServiceType(id: number): Observable<Ifitter[]> {
-  return this._http.get<Ifitter[]>(`${this.api}/${id}/disponivel`,{headers: this.headers})
+  return this._http.get<Ifitter[]>(`${this.api}/${id}/tipoServico`,{headers: this.headers})
   .catch(this.handleError);
 }
 
