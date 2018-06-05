@@ -9,15 +9,15 @@
      </thead>
      <tbody>
        <loading style="margin: 15%,0,0,50%;" [hidden]='!loading'></loading>
-       <tr [hidden]='loading' *ngFor='let fitter of fitterList'>
+       <tr [hidden]='loading' *ngFor='let fitter of fitterList; let i=index' (click)='seleciona(fitter); setClickedRow(i)' [class.active]="i == selectedRow">
          <td>
            <span *ngIf='fitter.availability; then verdadeiro else falso'></span>
            <ng-template #verdadeiro><i class="material-icons" style="color: green">fiber_manual_record</i></ng-template>
            <ng-template #falso><i class="material-icons" style="color: red">fiber_manual_record</i></ng-template>
          </td>
-         <td  (click)='seleciona(fitter)'>{{fitter.name}}</td>
+         <td>{{fitter.name}}</td>
          <td>
-           <pm-star [rating]='fitter.averageRating'>
+           <pm-star (ratingClicked)='onRatingClicked($event)' [rating]='fitter.averageRating'>
          </pm-star>
          </td>
          </tr>

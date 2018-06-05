@@ -29,6 +29,7 @@ export class HomeFitterComponent implements OnInit {
   private ofertaServico: Ioffer;
   private client: Iclient;
   private modal: any;
+  mensagemErroServico : string;
 
 
 
@@ -49,11 +50,13 @@ export class HomeFitterComponent implements OnInit {
 
     this.form = this.formBuilder.group({
       OfferId: '',
+      ClientId: '',
       ServiceTypeId: '',
       FitterId: this.currentUser.id,
       ApproximateTime: ['', Validators.compose([
         Validators.required,
-        Validators.pattern(/^(\d{0,23}):?(\d{0,59})$/),
+        Validators.pattern(/^(\d{0,1})([0-3][^4-9]{0,1}):?([0-5]{0,1})(\d{0,1})?$/),
+        
       ]),
       ],
       Value: ['', Validators.required],
@@ -82,6 +85,7 @@ private loadService(){
   this.svc.getByFitter(id)
   .subscribe(currentServico => {
     this.servico = currentServico;    
+    this.mensagemErroServico =  "Você não está em nenhum serviço atualmente";
     this.loadingserv = false;
   });
 }

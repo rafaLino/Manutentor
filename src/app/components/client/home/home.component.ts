@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { OfferService } from '../../../services/offer.service';
-import { MzValidationModule, MzModalService } from 'ng2-materialize';
+import { MzValidationModule, MzModalService, MzToastService } from 'ng2-materialize';
 import { TabelaFitterComponent } from '../tabela-fitter/tabela-fitter.component';
 import { ServiceService } from '../../../services/service.service';
 import { AlertModalComponent } from '../alert-modal/alertModal.component';
@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit {
   fitterId: number;
   minhacasa = true;
   TypeId: number;
+  EnviarPedidoLoading: boolean;
 
 
 
@@ -42,8 +43,8 @@ export class HomeComponent implements OnInit {
     private fb: FormBuilder,
     private route: Router,
     private activeRoute: ActivatedRoute,
-    private modalAlert: MzModalService
-
+    private modalAlert: MzModalService,
+    private toastService: MzToastService
 
 
   ) {
@@ -54,7 +55,7 @@ export class HomeComponent implements OnInit {
     this.form = this.fb.group({
       ClientId: this.currentUser.id,
       FitterId: [this.fitterId, Validators.required],
-      ServiceTypeId: ['', Validators.required],
+      SType: ['', Validators.required],
       Description: ['', Validators.required],
       Address: '',
       Number: '',
@@ -88,9 +89,13 @@ export class HomeComponent implements OnInit {
     if (this.minhacasa)
       this.preencheEndereco();
 
+      this.EnviarPedidoLoading = true;
     const data = JSON.stringify(this.form.value);
-    this.svcOffer.post(data);
-    console.log(data.toString());
+    this.svcOffer.post(data).subscribe( res=> {
+      this.showToast("Aguarde Resposta do Manutentor");
+      this.EnviarPedidoLoading = false;
+    });
+    
 
   }
 
@@ -133,6 +138,10 @@ export class HomeComponent implements OnInit {
     $event.preventDefault();
     this.tabela.changeList($event.target.value);
 
+  }
+
+  showToast(mensagem: string) {
+    this.toastService.show(mensagem, 4000, 'green');
   }
 
 }

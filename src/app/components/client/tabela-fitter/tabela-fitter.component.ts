@@ -12,14 +12,17 @@ import { FormGroup } from '@angular/forms';
 export class TabelaFitterComponent implements OnInit {
   fitterList: Ifitter[];
   loading = true;
+  selectedRow: Number;
   @Output() formEvent = new EventEmitter<number>();
 
   constructor(
     private svcFitter: FitterService,
     private route: ActivatedRoute
-  ) { }
+  ) { 
+  }
 
   ngOnInit() {
+    
     this.svcFitter.getList()
       .subscribe(fitters => {
         this.fitterList = fitters;
@@ -44,13 +47,18 @@ export class TabelaFitterComponent implements OnInit {
     if (!fitter.availability)
       alert("Manutentor Indisponível");
     else
-      this.formEvent.emit(fitter.id);
-
+      this.formEvent.emit(fitter.id);      
+      
+    
   }
 
 
   onRatingClicked(message: string): void {
     console.log(message);
+  }
+
+  setClickedRow(index){    
+    this.selectedRow = index;
   }
 
 

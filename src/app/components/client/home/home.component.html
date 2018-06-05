@@ -7,7 +7,7 @@
   <form [formGroup]="form" (ngSubmit)="Send();">
     <div class="row">
       <div class=" col offset-m2 m5 s12">
-        <select id="options-select" class="browser-default col m8" formControlName="ServiceTypeId" (change)="onTypeChanged($event)">
+        <select id="options-select" class="browser-default col m8" formControlName="SType" (change)="onTypeChanged($event)">
           <option value="" disabled selected>--Selecione--</option>
           <option *ngFor='let type of typeServices' [value]='type.id'>{{type.description}}</option>
         </select>
@@ -25,10 +25,14 @@
     </div>
     <div class="row">
       <div class="col offset-m2 m4 s7">
-        <button class="btn btn-small blue darken-2 " mz-button (click)="bottomSheetModal.open()">Insira uma foto</button>
+        <button class="btn btn-small blue darken-2 " mz-button type="button" (click)="bottomSheetModal.open()">Insira uma foto</button>
       </div>
       <div class="col m4 s5">
-        <button type="submit" [disabled]="!form.valid" class="waves-effect waves-light btn teal accent-4 white-text">Enviar Pedido</button>
+        <button type="submit" [disabled]="!form.valid" class="waves-effect waves-light btn teal accent-4 white-text">
+          <span [hidden]='EnviarPedidoLoading'>Enviar Pedido</span>
+          <mz-spinner [hidden]="!EnviarPedidoLoading" [color]="'blue'" [size]="'small'">
+            </mz-spinner>
+        </button>
       </div>
 
     </div>
@@ -42,9 +46,9 @@
     </div>
     <!-- ENDERECO -->
     <div class="row">
-      <div class="col offset-m2 m7 s7 endereco" [hidden]="minhacasa">
+      <div class="col offset-m2 m7 s12 endereco" [hidden]="minhacasa">
         <div class="row">
-          <div class="input-field col m8 s8">
+          <div class="input-field col m8 s9">
             <input id="Address" formControlName="Address" autocomplete="off" type="text" class="validate">
             <label for="Address">Endereço</label>
           </div>
@@ -103,6 +107,5 @@
     <button mz-button class="btn-floating btn-large left waves-effect waves-light red">
       <i class="material-icons">add</i>
     </button>
-    <button mz-button [flat]="true" class="btn btn-large waves-effect waves-light green white-text" mz-modal-close>Ok</button>
   </mz-modal-footer>
 </mz-modal>
