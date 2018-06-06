@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Ioffer } from '../../../entities/offer';
 import { OfferService } from '../../../services/offer.service';
-import { ActivatedRoute, Route } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Ifitter } from '../../../entities/fitter';
 import { Iservice } from '../../../entities/service';
 import { FitterService } from '../../../services/fitter.service';
@@ -11,6 +11,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { validateConfig } from '@angular/router/src/config';
 import { ServiceService } from '../../../services/service.service';
 import { Status } from '../../shared/status.enum';
+import { MzMediaService } from 'ng2-materialize';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 
 
 @Component({
@@ -18,18 +21,26 @@ import { Status } from '../../shared/status.enum';
   styleUrls: ['./homeFitter.component.css']
 })
 export class HomeFitterComponent implements OnInit {
+  
+  
+  public static updateService: Subject<boolean> = new Subject();
+  public static updateOffer: Subject<boolean> = new Subject();
 
-  form: FormGroup;
-  ofertas: Ioffer[];
+  private smallResolution: Observable<boolean>;
   private servico: Iservice;
-  loading = true;
-  loadingserv = true;
-  loadingForm = false;
   private currentUser: Ifitter;
   private ofertaServico: Ioffer;
   private client: Iclient;
   private modal: any;
-  mensagemErroServico : string;
+  mensagemErroServico: string;
+  form: FormGroup;
+  ofertas: Ioffer[];
+  card : boolean;
+  finServicoloading: boolean;
+  loading = true;
+  loadingserv = true;
+  loadingForm = false;
+  
 
 
 
@@ -39,9 +50,13 @@ export class HomeFitterComponent implements OnInit {
     //private fitterservice: FitterService,
     private clientService: ClientService,
     private formBuilder: FormBuilder,
-    private svc: ServiceService
+    private svc: ServiceService,
+    private mediaService : MzMediaService,
+    private route: Router 
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    this.VerificaLogin();
+    this.smallResolution = this.mediaService.isActive('s');
   }
 
   ngOnInit() {
@@ -56,7 +71,7 @@ export class HomeFitterComponent implements OnInit {
       ApproximateTime: ['', Validators.compose([
         Validators.required,
         Validators.pattern(/^(\d{0,1})([0-3][^4-9]{0,1}):?([0-5]{0,1})(\d{0,1})?$/),
-        
+
       ]),
       ],
       Value: ['', Validators.required],
@@ -70,30 +85,34 @@ export class HomeFitterComponent implements OnInit {
     });
   }
 
-private loadOffer(){
+  private loadOffer() {
 
-  this.offerService.getList(this.currentUser.id)
-  .subscribe(offers => {
-    this.ofertas = offers;
-    this.loading = false;
-  });
-}
+    this.offerService.getList(this.currentUser.id)
+      .subscribe(offers => {
+        this.ofertas = offers;
+        this.loading = false;
+      });
+  }
 
-private loadService(){
-   let id = this.currentUser.id;
-   
-  this.svc.getByFitter(id)
-  .subscribe(currentServico => {
-    this.servico = currentServico;    
-    this.mensagemErroServico =  "Você não está em nenhum serviço atualmente";
-    this.loadingserv = false;
-  });
-}
+  private loadService() {
+    let id = this.currentUser.id;
+
+    this.svc.getByFitter(id)
+      .subscribe(currentServico => {
+        this.servico = currentServico;
+
+        this.mensagemErroServico = "Você não está em nenhum serviço atualmente";
+        this.loadingserv = false;
+      });
+  }
 
   SelecionaOferta(oferta: Ioffer, modal) {
-    if(oferta.status == Status.Aguardando){
+    if (oferta.status == Status.Aguardando) {
       alert("aguardando aprovação");
       return;
+    }
+    if (this.hasServico()) {
+      alert("Você possui um serviço em execução");
     }
     this.ofertaServico = oferta;
     this.modal = modal;
@@ -130,5 +149,36 @@ private loadService(){
       this.modal.close();
     });
     //console.log(data.toString());
+  }
+
+  hasServico(): boolean {
+    let has:boolean;
+    if (this.servico == undefined || this.servico == null)
+      has = false;
+    else
+      has = true;
+
+      return has;
+  }
+
+  finalizarServico(){
+    this.finServicoloading = true;
+    this.svc.setStatus(this.servico.id, Status.Finalizado)
+    .subscribe( res => {
+        this.finServicoloading = false;
+        this.toggleCard();
+        this.loadService();
+        console.log(res);
+    });
+  }
+
+  toggleCard(){
+    this.card = !this.card;
+  }
+
+
+  VerificaLogin(){
+    if(this.currentUser == undefined || localStorage.getItem("currentUser") == undefined)
+    this.route.navigate(['login']);
   }
 }

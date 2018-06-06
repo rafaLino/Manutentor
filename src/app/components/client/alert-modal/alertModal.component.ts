@@ -7,7 +7,9 @@ import { ServiceService } from "../../../services/service.service";
 import { FitterService } from "../../../services/fitter.service";
 
 @Component({
-    templateUrl: './alertModal.component.html'
+    templateUrl: './alertModal.component.html',
+    styleUrls: ['./alertModal.component.css']
+    
 })
 export class AlertModalComponent extends MzBaseModal{
     @Input() dataBiding: any;

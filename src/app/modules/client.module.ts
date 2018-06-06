@@ -13,7 +13,7 @@ import { loadingComponent } from '../components/shared/loading.component';
 import { ServicoComponent } from '../components/client/servico/servico.component';
 import { OfferService } from '../services/offer.service';
 import { AppComponent } from '../app.component';
-import { MzModalModule, MzModalService, MzCollectionModule, MzSpinnerModule, MzToastModule, MzToastService } from 'ng2-materialize';
+import { MzModalModule, MzModalService, MzCollectionModule, MzSpinnerModule, MzToastModule, MzToastService, MzMediaModule, MzMediaService, MzCardModule, MzNavbarModule } from 'ng2-materialize';
 import { MzButtonModule } from 'ng2-materialize';
 import { MzSelectModule } from 'ng2-materialize';
 import { MzTextareaModule } from 'ng2-materialize';
@@ -26,7 +26,7 @@ import { AlertModalComponent } from '../components/client/alert-modal/alertModal
   imports: [
     CommonModule,
     RouterModule.forChild([
-       {path: 'home', component: HomeComponent /*, resolve: {fitter: TabelaFitterResolverService}*/ },       
+       {path: 'home', component: HomeComponent , runGuardsAndResolvers: `always` /*, resolve: {fitter: TabelaFitterResolverService}*/ },       
     ]),
     ReactiveFormsModule,
     SharedModule,
@@ -41,24 +41,29 @@ import { AlertModalComponent } from '../components/client/alert-modal/alertModal
     MzSwitchModule,
     MzCollectionModule,
     MzSpinnerModule,
-    MzToastModule
+    MzToastModule,
+    MzMediaModule,
+    MzCardModule,
+    MzNavbarModule 
   ],
-  exports: [
-    MzModalModule,
-    MzButtonModule,
-    MzSelectModule,
-    MzTextareaModule,
-    MzSidenavModule,
-    MzIconMdiModule,
-    MzIconModule,
-    MzCollapsibleModule,
-    MzSwitchModule,
-    MzCollectionModule,
-    MzSpinnerModule,
-    MzToastModule 
+  // exports: [
+  //   MzModalModule,
+  //   MzButtonModule,
+  //   MzSelectModule,
+  //   MzTextareaModule,
+  //   MzSidenavModule,
+  //   MzIconMdiModule,
+  //   MzIconModule,
+  //   MzCollapsibleModule,
+  //   MzSwitchModule,
+  //   MzCollectionModule,
+  //   MzSpinnerModule,
+  //   MzToastModule,
+  //   MzMediaModule,
+  //   MzCardModule 
     
 
-  ],
+  // ],
   declarations: [HomeComponent, TabelaFitterComponent, ServicoComponent, AlertModalComponent],
   providers: [
     FitterService,
@@ -66,7 +71,8 @@ import { AlertModalComponent } from '../components/client/alert-modal/alertModal
     TabelaFitterResolverService,
     OfferService,
     MzModalService,
-    MzToastService
+    MzToastService,
+    MzMediaService
     
   ],
   entryComponents:[

@@ -1,3 +1,18 @@
+<mz-navbar navbarClass="blue">
+    <span class="brand-logo center">Olá {{currentUser.name}}</span>
+  <mz-navbar-item-container [align]="'right'">
+    <mz-navbar-item>
+      <button *ngIf="alertaServicos" type="button" class="btn  btn-floating red">
+        <i class="material-icons">priority_high</i>
+      </button>
+    </mz-navbar-item>
+    <mz-navbar-item>
+      <a routerLink="/login">
+        <button type="button" id="logOut" class="waves-effect waves-teal btn-flat btn-large white-text" (click)="logOut()">Sair</button>
+      </a>
+    </mz-navbar-item>
+  </mz-navbar-item-container>
+</mz-navbar>
 <div id="pai" class="col m7 s7" align="center">
   <div class="row">
     <div class="col offset-m2 m7 s12">
@@ -31,7 +46,7 @@
         <button type="submit" [disabled]="!form.valid" class="waves-effect waves-light btn teal accent-4 white-text">
           <span [hidden]='EnviarPedidoLoading'>Enviar Pedido</span>
           <mz-spinner [hidden]="!EnviarPedidoLoading" [color]="'blue'" [size]="'small'">
-            </mz-spinner>
+          </mz-spinner>
         </button>
       </div>
 
@@ -78,12 +93,13 @@
       </div>
     </div>
   </form>
-</div>
-<div class="row">
-  <div class="col offset-m2 m7 s12">
-    <app-tabela-fitter #tabela (formEvent)="receiveForm($event)"></app-tabela-fitter>
-  </div>
-</div>
+  </div><!-- fim do pai -->
+  <div class="row grey lighten-4">
+      <div class="col offset-m2 m7 s12">
+        <app-tabela-fitter #tabela (formEvent)="receiveForm($event)"></app-tabela-fitter>
+      </div>
+    </div>
+
 
 <!-- MODAL FOTO -->
 <mz-modal #bottomSheetModal [fixedFooter]="true" [options]="modalOptions">

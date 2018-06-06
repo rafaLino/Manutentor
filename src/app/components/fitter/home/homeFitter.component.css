@@ -6,3 +6,26 @@
 td{
     cursor: pointer;
 }
+
+.modalservico{
+height: 30%!important;
+}
+
+.modal[_ngcontent-c4] {
+    height: 30%!important;
+}
+
+#logOut:hover{
+    background-color: unset;
+    opacity: 0.3;
+
+}
+
+#pai{
+    border-radius: 2px;
+    background-color: #f5f5f5 ;
+}
+
+.servicoColor {
+    background-color: #e53935;
+}

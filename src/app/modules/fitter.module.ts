@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { FitterService } from '../services/fitter.service';
 import { OfferService } from '../services/offer.service';
 import { HomeFitterComponent } from '../components/fitter/home/homeFitter.component';
-import { MzModalModule, MzButtonModule, MzSpinnerModule, MzValidationModule, MzInputModule  } from 'ng2-materialize';
+import { MzModalModule, MzButtonModule, MzSpinnerModule, MzValidationModule, MzInputModule, MzCardModule, MzMediaService, MzMediaModule, MzNavbarModule  } from 'ng2-materialize';
 import { ClientService } from '../services/client.service';
 import { MzSidenavModule } from 'ng2-materialize';
 import { ServiceService } from '../services/service.service';
@@ -14,7 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     RouterModule.forChild([
-      {path:'manutentor', component: HomeFitterComponent}
+      {path:'manutentor', component: HomeFitterComponent, runGuardsAndResolvers: `always`}
     ]),
     ReactiveFormsModule,
     MzModalModule,
@@ -22,7 +22,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     MzSpinnerModule,
     MzSidenavModule,
     MzValidationModule,
-    MzInputModule
+    MzInputModule,
+    MzCardModule,
+    MzMediaModule,
+    MzNavbarModule 
 
   ],
   declarations: [HomeFitterComponent],
@@ -30,7 +33,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     OfferService,
     FitterService,
     ClientService,
-    ServiceService
+    ServiceService,
+    MzMediaService
   ]
 })
 export class FitterModule { }

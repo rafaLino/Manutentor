@@ -12,18 +12,19 @@
   </mz-modal-header>
   <mz-modal-content>
     <mz-collection [hidden]='!active'>
-      <mz-collection-item *ngFor="let servico of servicos" (click)='seleciona(servico);'>
+      <mz-collection-item class="collection-item" *ngFor="let servico of servicos" (click)='seleciona(servico);'>
+          <a href="#!" mz-secondary-content>
+              <i mz-icon-mdi [icon]="'send'"></i>
+            </a>
         <p>
-          {{servico?.offer?.fitter?.name}}
+         {{servico?.offer?.fitter?.name}}
           <br> {{servico?.offer?.description}}
           <br> {{servico?.comments}}
           <br> {{servico?.approximateTime}}
           <br> {{servico?.value}}
         </p>
 
-        <a href="#!" mz-secondary-content>
-          <i mz-icon-mdi [icon]="'send'"></i>
-        </a>
+        
       </mz-collection-item>
     </mz-collection>
     <div class="col m10 s12" [hidden]='active'>

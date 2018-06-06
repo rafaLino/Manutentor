@@ -3,6 +3,7 @@
 }
 
 #tabela tr.active td {
-    background-color:#123456 !important;
-    color: white;
+    /* background-color:#123456 !important; */
+    background-color: #dce775!important; 
+    /* color: white; */
   }

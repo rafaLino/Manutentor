@@ -14,6 +14,7 @@ import { TabelaFitterComponent } from '../tabela-fitter/tabela-fitter.component'
 import { ServiceService } from '../../../services/service.service';
 import { AlertModalComponent } from '../alert-modal/alertModal.component';
 import { Options } from 'selenium-webdriver/firefox';
+import { Iservice } from '../../../entities/service';
 
 
 
@@ -33,6 +34,7 @@ export class HomeComponent implements OnInit {
   minhacasa = true;
   TypeId: number;
   EnviarPedidoLoading: boolean;
+  alertaServicos: Iservice[];
 
 
 
@@ -49,6 +51,7 @@ export class HomeComponent implements OnInit {
 
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      this.VerificaLogin();
   }
   ngOnInit() {
 
@@ -80,6 +83,7 @@ export class HomeComponent implements OnInit {
   loadServico(id: number) {
     this.servico.getByClient(id).subscribe(res => {      
       if (res.length > 0  ) {
+        this.alertaServicos = res;
         this.modalAlert.open(AlertModalComponent, { dataBiding: res });
       }
     });
@@ -143,5 +147,12 @@ export class HomeComponent implements OnInit {
   showToast(mensagem: string) {
     this.toastService.show(mensagem, 4000, 'green');
   }
+
+  VerificaLogin(){
+    if(this.currentUser == undefined || localStorage.getItem("currentUser") == undefined)
+    this.route.navigate(['login']);
+  }
+
+
 
 }

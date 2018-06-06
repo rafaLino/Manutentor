@@ -1,10 +1,25 @@
-<div id="pai" class="col m10 s12 l10">
+<mz-navbar navbarClass="blue navMan">
+    <span class="brand-logo center">Olá {{currentUser.name}}</span>
+    <mz-navbar-item-container [align]="'right'">
+      <mz-navbar-item>
+        <button *ngIf="alertaServicos" type="button" class="btn  btn-floating red">
+          <i class="material-icons">priority_high</i>
+        </button>
+      </mz-navbar-item>
+      <mz-navbar-item>
+        <a routerLink="/login">
+          <button type="button" id="logOut" class="waves-effect waves-teal btn-flat btn-large white-text" (click)="logOut()">Sair</button>
+        </a>
+      </mz-navbar-item>
+    </mz-navbar-item-container>
+  </mz-navbar>
+<div id="pai" style="margin-top: 20px;" class="col m12 s12">
   <div class="row">
-    <div class="col m10 s12">
+    <div class="col m12 s12">
       <table class="highlight centered">
         <thead>
           <tr>
-            <th colspan="3" class="h2 TituloTabela blue darken-1">Serviços Solicitados</th>
+            <th colspan="3" class="h2 TituloTabela  blue lighten-3">Serviços Solicitados</th>
           </tr>
           <tr>
             <th>Serviço</th>
@@ -37,7 +52,7 @@
   </div>
 
   <div class="row" style="margin-top:25%;">
-    <div class="col m10 s12">
+    <div class="col m12 s12">
       <mz-spinner [hidden]="!loadingserv" [color]="'blue'" [size]="'small'">
       </mz-spinner>
 
@@ -54,7 +69,7 @@
       <table class="highlight centered">
         <thead>
           <tr>
-            <th colspan="4" class="h2 TituloTabela red darken-1">Serviço Ativo</th>
+            <th colspan="4" class="h2 TituloTabela red lighten-4" [class.servicoColor]="servico">Serviço Ativo</th>
           </tr>
         </thead>
         <tbody>
@@ -63,7 +78,7 @@
               <i class="material-icons ">error_outline</i>{{mensagemErroServico}}
             </span>
           </tr>
-          <tr *ngIf="servico?.status != 1">
+          <tr *ngIf="servico?.status != 1" (click)='toggleCard()'>
             <td>{{servico?.serviceType}}</td>
             <td>{{servico?.value}}</td>
             <td>{{servico?.comments}}</td>
@@ -71,27 +86,27 @@
         </tbody>
       </table>
     </div>
+
+    <div class="row" *ngIf="card">
+      <div class="col s12 offset-m6 m4">
+        <div class="card">
+          <div class="card-content">
+            <button mz-button [flat]="true" (click)="toggleCard()" class="right">
+              <i class="material-icons">close</i>
+            </button>
+            <span class="card-title">Deseja finalizar este serviço?</span>
+            <p>
+              <button type="button" class="waves-effect waves-light btn blue darken-4 white-text" (click)="finalizarServico()">Finalizar</button>
+              <button type="button" class="waves-effect waves-light btn red accent-4 white-text" (click)="toggleCard()">Cancelar</button>
+              <mz-spinner [hidden]="!finServicoloading" [color]="'red'" [size]="'small'">
+              </mz-spinner>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
-
-<!-- <mz-sidenav #sidenav [id]="'sidenav-demo'" [collapseButtonId]="'sidenav-btn'" [fixed]="true" [draggable]="false">
-  <mz-sidenav-header>
-    Sidenav header
-  </mz-sidenav-header>
-  <mz-sidenav-subheader>Link Subheader</mz-sidenav-subheader>
-  <mz-sidenav-link>
-    <a href="#">First Link</a>
-  </mz-sidenav-link>
-  <mz-sidenav-divider></mz-sidenav-divider>
-  <mz-sidenav-link [active]="true">
-    <a href="#">Active Link</a>
-  </mz-sidenav-link>
-  <mz-sidenav-divider></mz-sidenav-divider>
-  <mz-sidenav-link>
-    <a href="#" class="waves-effect">Second Link With Waves</a>
-  </mz-sidenav-link>
-</mz-sidenav> -->
-
 
 
 
@@ -116,7 +131,7 @@
             <label for="Value">Valor</label>
           </div>
           <div class="input-field col m6 s6">
-            <input mz-input mz-validation  type="text" placeholder="__:__ (hora/minuto)" formControlName="ApproximateTime" id="tempo">
+            <input mz-input mz-validation type="text" placeholder="__:__ (hora/minuto)" formControlName="ApproximateTime" id="tempo">
             <label for="ApproximateTime">Tempo Estimado</label>
           </div>
         </div>

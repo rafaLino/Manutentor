@@ -35,8 +35,10 @@ import { MzButtonModule } from 'ng2-materialize';
       {path: 'loginManutentor', component: LoginManutentorComponent },
       {path: 'login', component: LoginComponent },
       {path: '', redirectTo: 'login', pathMatch: 'full'},
-      {path: '**', redirectTo: 'notfound', pathMatch: 'full'}
-    ]),
+      {path: '**', redirectTo: 'login', pathMatch: 'full'}
+    ],
+  {onSameUrlNavigation: `reload`}
+  ),
     ReactiveFormsModule,
     ClientModule,
     FitterModule
