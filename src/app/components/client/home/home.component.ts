@@ -1,19 +1,14 @@
-import { Component, OnInit, EventEmitter, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IserviceType } from '../../../entities/iservice-type';
-import { Ifitter } from '../../../entities/fitter';
-import { FitterService } from '../../../services/fitter.service';
-import { ClientService } from '../../../services/client.service';
 import { TypeServiceService } from '../../../services/type-service.service';
 import { Iclient } from '../../../entities/client';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
 import { OfferService } from '../../../services/offer.service';
-import { MzValidationModule, MzModalService, MzToastService } from 'ng2-materialize';
+import { MzModalService, MzToastService } from 'ng2-materialize';
 import { TabelaFitterComponent } from '../tabela-fitter/tabela-fitter.component';
 import { ServiceService } from '../../../services/service.service';
 import { AlertModalComponent } from '../alert-modal/alertModal.component';
-import { Options } from 'selenium-webdriver/firefox';
 import { Iservice } from '../../../entities/service';
 
 
@@ -44,7 +39,6 @@ export class HomeComponent implements OnInit {
     private servico: ServiceService,
     private fb: FormBuilder,
     private route: Router,
-    private activeRoute: ActivatedRoute,
     private modalAlert: MzModalService,
     private toastService: MzToastService
 
@@ -95,7 +89,7 @@ export class HomeComponent implements OnInit {
 
       this.EnviarPedidoLoading = true;
     const data = JSON.stringify(this.form.value);
-    this.svcOffer.post(data).subscribe( res=> {
+    this.svcOffer.post(data).subscribe( () => {
       this.showToast("Aguarde Resposta do Manutentor");
       this.EnviarPedidoLoading = false;
     });
