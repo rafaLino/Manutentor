@@ -3,7 +3,7 @@ import { IserviceType } from '../../../entities/iservice-type';
 import { TypeServiceService } from '../../../services/type-service.service';
 import { Iclient } from '../../../entities/client';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router} from '@angular/router';
 import { OfferService } from '../../../services/offer.service';
 import { MzModalService, MzToastService } from 'ng2-materialize';
 import { TabelaFitterComponent } from '../tabela-fitter/tabela-fitter.component';
@@ -139,7 +139,8 @@ export class HomeComponent implements OnInit {
   }
 
   showToast(mensagem: string) {
-    this.toastService.show(mensagem, 4000, 'green');
+    //this.toastService.show(mensagem, 4000, 'green');
+    alert(mensagem);
   }
 
   VerificaLogin(){
