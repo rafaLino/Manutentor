@@ -20,6 +20,9 @@ height: 30%!important;
     opacity: 0.3;
 
 }
+.negrito{
+    font-weight: bold;
+}
 
 #pai{
     border-radius: 2px;

@@ -78,7 +78,7 @@ export class HomeComponent implements OnInit {
     this.servico.getByClient(id).subscribe(res => {      
       if (res.length > 0  ) {
         this.alertaServicos = res;
-        this.modalAlert.open(AlertModalComponent, { dataBiding: res });
+        this.modalAlert.open(AlertModalComponent, { dataBiding: res });        
       }
     });
   }
@@ -139,13 +139,17 @@ export class HomeComponent implements OnInit {
   }
 
   showToast(mensagem: string) {
-    //this.toastService.show(mensagem, 4000, 'green');
+    //this.toastService.show(mensagem, 5000, 'blue lighten-5');
     alert(mensagem);
   }
 
   VerificaLogin(){
     if(this.currentUser == undefined || localStorage.getItem("currentUser") == undefined)
     this.route.navigate(['login']);
+  }
+
+  openAlertModal(){
+    this.modalAlert.open(AlertModalComponent, {dataBiding : this.alertaServicos});
   }
 
 

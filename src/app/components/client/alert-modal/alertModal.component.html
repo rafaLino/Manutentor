@@ -13,54 +13,96 @@
   <mz-modal-content>
     <mz-collection [hidden]='!active'>
       <mz-collection-item class="collection-item" *ngFor="let servico of servicos" (click)='seleciona(servico);'>
-          <a href="#!" mz-secondary-content>
-              <i mz-icon-mdi [icon]="'send'"></i>
-            </a>
-        <p>
-         {{servico?.offer?.fitter?.name}}
-          <br> {{servico?.offer?.description}}
-          <br> {{servico?.comments}}
-          <br> {{servico?.approximateTime}}
-          <br> {{servico?.value}}
-        </p>
+        <a href="#!" mz-secondary-content>
+          <i mz-icon-mdi [icon]="'send'"></i>
+        </a>
+        <ul class="">
+          <li class="">
+            <span class="negrito">Descrição:</span>
+            {{servico?.offer?.description}}
+          </li>
 
-        
+          <li class="">
+            <span class="negrito">Comentário do Manutentor:</span>
+            {{servico?.comments}}</li>
+
+          <li class="">
+            <span class="negrito"> R$ {{servico?.value}}</span>
+            <br>
+            <span class="negrito">Tempo Aproximado:</span> {{servico?.approximateTime}}
+          </li>
+        </ul>
+
+
       </mz-collection-item>
     </mz-collection>
     <div class="col m10 s12" [hidden]='active'>
-      <div class="col m10 s12">
-        <input value="{{currentService?.approximateTime}}">
-      </div>
-      <div class="col m10 s12">
-        <input value="{{currentService?.value}}">
-      </div>
-      <div class="col m10 s12">
-        <input value="{{currentService?.comments}}">
-      </div>
-      <div class="col m10 s12">
-        <input value="{{currentService?.address}}">
-      </div>
-      <div class="col m10 s12">
-        <input value="{{currentService?.number}}">
-      </div>
-      <div class="col m10 s12">
-        <input value="{{currentService?.region}}">
-      </div>
-      <div class="col m10 s12">
-        <input value="{{currentService?.city}}">
-      </div>
-      <div class="col m10 s12">
-        <input value="{{currentService?.cep}}">
-      </div>
-      <div class="col m10 s12">
-        <input value="{{currentService?.state}}">
-      </div>
+      <ul class="collection">
+        <li class="collection-item avatar">
+          <img [src]="currentFitter?.profilePicture" alt="nophoto" class="circle">
+          <span class="title">Manutentor {{currentFitter?.name}}</span>
+          <p>Cel: {{currentFitter?.cellPhone}}
+            <br>
+          </p>
+          <span class="secondary-content">
+            <pm-star [rating]='currentFitter?.averageRating'>
+            </pm-star>
+          </span>
+        </li>
+      </ul>
+      <ul class="collection">
+        <li class="collection-item">
+          <span class="title">{{currentService?.comments}}</span>
+          <p>
+            Tempo Aproximado: {{currentService?.approximateTime}}
+            <br> R$ {{currentService?.value}}
+          </p>
+        </li>
+      </ul>
+
+      <ul class="collection">
+        <li class="collection-item">
+          <span class="title">Endereço</span>
+          <p>
+            <li>
+              <span class="negrito">Logradouro: </span>
+              {{currentService?.address}}
+              <span class="negrito">nº </span>
+              {{currentService?.number}}
+            </li>
+            <li>
+              <span class="negrito">Bairro:</span>
+              {{currentService?.region}}
+            </li>
+            <li>
+              <span class="negrito">Cidade:</span>
+              {{currentService?.city}}
+            </li>
+            <li>
+              <span class="negrito">CEP: </span>
+              {{currentService?.cep}}
+            </li>
+            <li>
+              <span class="negrito">Estado: </span>
+              {{currentService?.state}}
+            </li>
+
+
+          </p>
+        </li>
+      </ul>
     </div>
   </mz-modal-content>
   <mz-modal-footer [hidden]='active'>
+    <button mz-button class="left" [flat]="true" (click)="voltar()">
+      <span class="secondary-content">
+        <i class="large material-icons">arrow_back</i>
+      </span>
+      Voltar
+      </button>
     <button mz-button [flat]="true" mz-modal-close>Cancelar</button>
     <button mz-button [flat]="true" (click)="confirmar()">Confirmar</button>
     <mz-spinner [hidden]="!loading" [color]="'blue'" [size]="'small'">
-      </mz-spinner>
+    </mz-spinner>
   </mz-modal-footer>
 </mz-modal>

@@ -18,7 +18,8 @@ import { ConvertToSpacesPipe } from './convert-to-spaces.pipe';
     StarComponent,
     loadingComponent,
     CommonModule,
-    FormsModule
+    FormsModule,
+    ConvertToSpacesPipe
   ]
 })
 export class SharedModule { }

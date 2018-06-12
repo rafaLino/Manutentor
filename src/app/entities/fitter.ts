@@ -11,7 +11,7 @@ export interface Ifitter {
   email: string;
   password: string;
   urlProfilePicture: string;
-
+  profilePicture : any;
   address: string;
   number: string;
   region: string;
@@ -22,4 +22,5 @@ export interface Ifitter {
   averageRating: number;
   availability: boolean;
   serviceType: Array<IserviceType>;
+ 
 }

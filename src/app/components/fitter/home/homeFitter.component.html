@@ -1,18 +1,18 @@
 <mz-navbar navbarClass="blue navMan">
-    <span class="brand-logo center hide-on-small-only">Olá {{currentUser.name}}</span>
-    <mz-navbar-item-container [align]="'right'">
-      <mz-navbar-item>
-        <button *ngIf="alertaServicos" type="button" class="btn  btn-floating red">
-          <i class="material-icons">priority_high</i>
-        </button>
-      </mz-navbar-item>
-      <mz-navbar-item>
-        <a routerLink="/login">
-          <button type="button" id="logOut" class="waves-effect waves-teal btn-flat btn-large white-text">Sair</button>
-        </a>
-      </mz-navbar-item>
-    </mz-navbar-item-container>
-  </mz-navbar>
+  <span class="brand-logo center hide-on-small-only">Olá {{currentUser.name}}</span>
+  <mz-navbar-item-container [align]="'right'">
+    <mz-navbar-item>
+      <button *ngIf="alertaServicos" type="button" class="btn  btn-floating red">
+        <i class="material-icons">priority_high</i>
+      </button>
+    </mz-navbar-item>
+    <mz-navbar-item>
+      <a routerLink="/login">
+        <button type="button" id="logOut" class="waves-effect waves-teal btn-flat btn-large white-text">Sair</button>
+      </a>
+    </mz-navbar-item>
+  </mz-navbar-item-container>
+</mz-navbar>
 <div id="pai" style="margin-top: 20px;" class="col m12 s12">
   <div class="row">
     <div class="col m12 s12">
@@ -69,7 +69,7 @@
       <table class="highlight centered">
         <thead>
           <tr>
-            <th colspan="4" class="h2 TituloTabela red lighten-4" [class.servicoColor]="servico">Serviço Ativo</th>
+            <th colspan="5" class="h2 TituloTabela red lighten-4" [class.servicoColor]="servico">Serviço Ativo</th>
           </tr>
         </thead>
         <tbody>
@@ -78,16 +78,32 @@
               <i class="material-icons ">error_outline</i>{{mensagemErroServico}}
             </span>
           </tr>
-          <tr *ngIf="servico?.status != 1" (click)='toggleCard()'>
+          <tr *ngIf="servico && servico?.status != 1">
             <td>{{servico?.serviceType}}</td>
-            <td>{{servico?.value}}</td>
-            <td>{{servico?.comments}}</td>
+            <td class="negrito">R$ {{servico?.value}}</td>
+            <td class="negrito">{{servico?.comments}}</td>
+            <td class="negrito">
+              <p>
+                {{servico?.address}} nº {{servico?.number}}
+                <br> {{servico?.region}}
+                <br> {{servico?.city}}, {{servico?.state}}
+                <br> {{servico?.cep}}
+              </p>
+            </td>
+            <td>
+              <button type="button" class="waves-effect waves-light btn blue darken-4 white-text" (click)="finalizarServico()">
+                <i class="material-icons right">power_settings_new</i>
+                Finalizar</button>
+            </td>
+            <mz-spinner [hidden]="!finServicoloading" [color]="'red'" [size]="'small'">
+            </mz-spinner>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <div class="row" *ngIf="card">
+
+    <!-- <div class="row" *ngIf="card">
       <div class="col s12 offset-m6 m4">
         <div class="card">
           <div class="card-content">
@@ -104,7 +120,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </div>
 

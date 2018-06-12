@@ -82,7 +82,9 @@
     justify-self: center;
     align-self: center;
   }
-  
+  .negrito{
+    font-weight: bold;
+  }
   .account-details {
     grid-area: details;
     display: flex;

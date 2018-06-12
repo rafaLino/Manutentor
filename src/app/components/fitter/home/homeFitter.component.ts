@@ -21,8 +21,8 @@ import { Subject } from 'rxjs/Subject';
   styleUrls: ['./homeFitter.component.css']
 })
 export class HomeFitterComponent implements OnInit {
-  
-  
+
+
   public static updateService: Subject<boolean> = new Subject();
   public static updateOffer: Subject<boolean> = new Subject();
 
@@ -35,12 +35,12 @@ export class HomeFitterComponent implements OnInit {
   mensagemErroServico: string;
   form: FormGroup;
   ofertas: Ioffer[];
-  card : boolean;
+  card: boolean;
   finServicoloading: boolean;
   loading = true;
   loadingserv = true;
   loadingForm = false;
-  
+
 
 
 
@@ -51,8 +51,8 @@ export class HomeFitterComponent implements OnInit {
     private clientService: ClientService,
     private formBuilder: FormBuilder,
     private svc: ServiceService,
-    private mediaService : MzMediaService,
-    private route: Router 
+    private mediaService: MzMediaService,
+    private route: Router
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     this.VerificaLogin();
@@ -100,7 +100,6 @@ export class HomeFitterComponent implements OnInit {
     this.svc.getByFitter(id)
       .subscribe(currentServico => {
         this.servico = currentServico;
-
         this.mensagemErroServico = "Você não está em nenhum serviço atualmente";
         this.loadingserv = false;
       });
@@ -141,10 +140,9 @@ export class HomeFitterComponent implements OnInit {
   Salvar() {
     const data = JSON.stringify(this.form.value);
     this.loadingForm = true;
-    console.log(data);
     this.svc.post(data).subscribe(res => {
       this.loadingForm = false;
-      console.log(res);
+
       this.loadOffer();
       this.modal.close();
     });
@@ -152,33 +150,27 @@ export class HomeFitterComponent implements OnInit {
   }
 
   hasServico(): boolean {
-    let has:boolean;
+    let has: boolean;
     if (this.servico == undefined || this.servico == null)
       has = false;
     else
       has = true;
 
-      return has;
+    return has;
   }
 
-  finalizarServico(){
+  finalizarServico() {
     this.finServicoloading = true;
     this.svc.setStatus(this.servico.id, Status.Finalizado)
-    .subscribe( res => {
+      .subscribe(res => {
         this.finServicoloading = false;
-        this.toggleCard();
         this.loadService();
-        console.log(res);
-    });
-  }
-
-  toggleCard(){
-    this.card = !this.card;
+      });
   }
 
 
-  VerificaLogin(){
-    if(this.currentUser == undefined || localStorage.getItem("currentUser") == undefined)
-    this.route.navigate(['login']);
+  VerificaLogin() {
+    if (this.currentUser == undefined || localStorage.getItem("currentUser") == undefined)
+      this.route.navigate(['login']);
   }
 }

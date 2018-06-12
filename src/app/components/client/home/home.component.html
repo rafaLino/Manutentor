@@ -2,7 +2,7 @@
     <span class="brand-logo center hide-on-small-only">Olá {{currentUser.name}}</span>
   <mz-navbar-item-container [align]="'right'">
     <mz-navbar-item>
-      <button *ngIf="alertaServicos" type="button" class="btn  btn-floating red">
+      <button *ngIf="alertaServicos" (click)="openAlertModal()" type="button" class="btn  btn-floating red">
         <i class="material-icons">priority_high</i>
       </button>
     </mz-navbar-item>

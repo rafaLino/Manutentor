@@ -1,3 +1,7 @@
 .collection-item{ 
     cursor: pointer;
 }
+
+.negrito{
+    font-weight: bold;
+  }
