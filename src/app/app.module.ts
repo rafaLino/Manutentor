@@ -16,8 +16,9 @@ import { LoginManutentorComponent } from './components/login/login-manutentor/lo
 import { FitterModule } from './modules/fitter.module';
 import { ClientModule } from './modules/client.module';
 import { SharedModule } from './components/shared/shared.module';
-import { MzModalModule } from 'ng2-materialize';
+import { MzModalModule, MzSwitchModule, MzCheckboxModule, MzInputModule, MzIconModule, MzIconMdiModule, MzRadioButtonModule, MzDatepickerModule } from 'ng2-materialize';
 import { MzButtonModule } from 'ng2-materialize';
+import { CadastroComponent } from './components/cadastro/cadastro.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MzButtonModule } from 'ng2-materialize';
     AlertComponent,
     LoginComponent,
     LoginManutentorComponent,
-    NotfoudComponent
+    NotfoudComponent,
+    CadastroComponent
   ],
   imports: [
    BrowserModule,
@@ -33,6 +35,7 @@ import { MzButtonModule } from 'ng2-materialize';
     HttpClientModule,
     RouterModule.forRoot([            
       {path: 'loginManutentor', component: LoginManutentorComponent },
+      {path:  "cadastrar", component: CadastroComponent},
       {path: 'login', component: LoginComponent },
       {path: '', redirectTo: 'login', pathMatch: 'full'},
       {path: '**', redirectTo: 'login', pathMatch: 'full'}
@@ -41,7 +44,14 @@ import { MzButtonModule } from 'ng2-materialize';
   ),
     ReactiveFormsModule,
     ClientModule,
-    FitterModule
+    FitterModule,
+    MzSwitchModule,
+    MzCheckboxModule,
+    MzInputModule,
+    MzIconMdiModule,
+    MzIconModule,
+    MzRadioButtonModule,
+    MzDatepickerModule 
 
   ],
   providers: [

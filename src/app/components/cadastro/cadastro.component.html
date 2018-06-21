@@ -1,0 +1,113 @@
+<div class="col m12 s12">
+    <mz-switch-container>
+        <input mz-switch id="switch-id" [off]="''" [on]="'Quero Ser Um Manutentor'" [value]='toggleManutentor' [checked]='false'
+          (change)="queroSerManutentor($event)" type="checkbox">
+      </mz-switch-container>
+  <form [formGroup]="form" (ngSubmit)="save()">
+    <mz-input-container>
+      <i mz-icon-mdi mz-input-prefix [icon]="''">
+      </i>
+      <input mz-input [label]="'Nome'" [validate]="true" [dataError]="'Nome inválido'" [dataSuccess]="'Nome valido'" id="nome-input"
+        placeholder="Digite Seu Nome" formControlName="Name" type="text">
+    </mz-input-container>
+    <mz-input-container>
+      <i mz-icon-mdi mz-input-prefix [icon]="''">
+      </i>
+      <input mz-input [label]="'Email'" [validate]="true" [dataError]="'Email inválido'" [dataSuccess]="'Email valido'" id="email-input"
+        placeholder="Digite Email" formControlName="Email" type="email">
+    </mz-input-container>
+    <mz-input-container>
+      <i mz-icon-mdi mz-input-prefix [icon]="''">
+      </i>
+      <input mz-input [label]="'Senha'" [validate]="true" [dataError]="'Senha inválido'" [dataSuccess]="'Senha valido'" id="Senha-input"
+        placeholder="Defina Uma Senha" formControlName="Password" type="password">
+    </mz-input-container>
+    <mz-input-container>
+      <i mz-icon-mdi mz-input-prefix [icon]="''">
+      </i>
+      <input mz-input [label]="'CPF'" [validate]="true" [dataError]="'CPF inválido'" [dataSuccess]="'CPF valido'" id="CPF-input"
+        placeholder="Digite seu CPF" formControlName="Cpf" type="text">
+    </mz-input-container>
+    <div class="row" style="margin-left: 35px;">
+      <p>
+        <label>
+          <input class="with-gap" type="radio" value="1" formControlName="Genre" name="Genre" />
+          <span>Masculino</span>
+        </label>
+        <label>
+          <input class="with-gap" type="radio" value="2" formControlName="Genre" name="Genre" />
+          <span>Feminino</span>
+        </label>
+      </p>
+    </div>
+    <mz-input-container>
+      <i mz-icon-mdi mz-input-prefix [icon]="''">
+      </i>
+      <input mz-input [label]="'Telefone'" [validate]="true" [dataError]="'Telefone inválido'" [dataSuccess]="'Telefone valido'"
+        id="Telefone-input" placeholder="Digite seu Telefone" formControlName="Cellphone" type="text">
+    </mz-input-container>
+    <mz-input-container>
+      <i mz-icon-mdi mz-input-prefix [icon]="''">
+      </i>
+      <input mz-input [label]="'Data de Nascimento'" [validate]="true" [dataError]="'Data inválido'" [dataSuccess]="'Data valido'"
+        id="Data-input" placeholder="dd/mm/aaaa" formControlName="Birthdate" type="date"  class="datepicker">
+    </mz-input-container>
+    <mz-input-container>
+      <i mz-icon-mdi mz-input-prefix [icon]="''">
+      </i>
+      <input mz-input [label]="'Endereço'" [validate]="true" [dataError]="'Endereço inválido'" [dataSuccess]="'Endereço valido'"
+        id="Endereco-input" placeholder="" formControlName="Address" type="text">
+    </mz-input-container>
+    <mz-input-container>
+      <i mz-icon-mdi mz-input-prefix [icon]="''">
+      </i>
+      <input mz-input [label]="'Número'" [validate]="true" [dataError]="'Número inválido'" [dataSuccess]="'Número valido'" id="Numero-input"
+        placeholder="" formControlName="Number" type="text">
+    </mz-input-container>
+    <mz-input-container>
+      <i mz-icon-mdi mz-input-prefix [icon]="''">
+      </i>
+      <input mz-input [label]="'Bairro'" [validate]="true" [dataError]="'Bairro inválido'" [dataSuccess]="'Bairro valido'" id="Region-input"
+        placeholder="" formControlName="Region" type="text">
+    </mz-input-container>
+    <mz-input-container>
+      <i mz-icon-mdi mz-input-prefix [icon]="''">
+      </i>
+      <input mz-input [label]="'Cidade'" [validate]="true" [dataError]="'Cidade inválido'" [dataSuccess]="'Cidade valido'" id="City-input"
+        placeholder="" formControlName="City" type="text">
+    </mz-input-container>
+    <mz-input-container>
+      <i mz-icon-mdi mz-input-prefix [icon]="''">
+      </i>
+      <input mz-input [label]="'Estado'" [validate]="true" [dataError]="'Estado inválido'" [dataSuccess]="'Estado valido'" id="State-input"
+        placeholder="" formControlName="State" type="text">
+    </mz-input-container>
+    <mz-input-container>
+      <i mz-icon-mdi mz-input-prefix [icon]="''">
+      </i>
+      <input mz-input [label]="'Cep'" [validate]="true" [dataError]="'Cep inválido'" [dataSuccess]="'Cep valido'" id="Cep-input"
+        placeholder="" formControlName="Cep" type="text">
+    </mz-input-container>
+    
+
+    <div class="col m12 s12" *ngIf="toggleManutentor">
+      <label>Selecione os tipo de Serviço que pode realizar</label>
+      <p *ngFor="let typeService of typeServices">
+        <label>
+          <input type="checkbox" value="{{typeService.id}}" (change)="onCheck($event)"/>
+          <span>{{typeService.description}}</span>
+        </label>
+      </p>
+    </div>
+
+    <div class="row">
+      <div class="col m12 s12">
+            <button routerLink="login" class="btn waves-effect red darken-3 waves-dark" type="button">Cancelar
+              </button>
+              <button class="btn waves-effect waves-light" type="submit">Cadastrar
+                  <i class="material-icons right">send</i>
+                </button>
+      </div>
+    </div>
+  </form>
+</div>

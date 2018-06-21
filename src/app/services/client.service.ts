@@ -32,7 +32,7 @@ get(id: number): Observable<Iclient> {
 
 }
 
-post(client): Observable<Iclient> {
+post(client : string): Observable<Iclient> {
     return this._http.post(this.api, client,{headers: this.headers})
     .catch(this.handleError);
 

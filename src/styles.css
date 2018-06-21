@@ -57,7 +57,9 @@ button.Color-White {
 input[type=submit].Color-White {
     background-color: #FFFFFF !important;
 }
-
+input[type="radio"]:checked{
+    opacity: 1;
+}
 .Color-White {
     color:#FFFFFF !important;
 }

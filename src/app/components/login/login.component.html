@@ -1,47 +1,51 @@
-     <div class="col m6 s12" align="center" width="120px">
-     <form class="col m6 s4" [formGroup]="LoginForm" (ngSubmit)="Login();" role="form" >
-       <div class="row">
-        <h1 class="h1 Color-Cerulean">Manutentor</h1>
-       </div>
-          <div class="row">
-            <div class="input-field col offset-m4 m6 s11">
-              <input formControlName="Email" id="email" type="text" class="col m8 validate">
-              <label for="email">Email</label>
-            </div>
-          </div>
-            <div class="row">
-              <div class="input-field col offset-m4 m6 s11">
-                <input formControlName="Password" id="password" type="password" class="col m8 validate" autocomplete="off">
-                <label for="password">Senha</label>
-              </div>
-            </div>
-          <div class="row">
-            <button id="entrar" class="btn btn-large waves-effect waves-light teal lighten-2" type="submit">
-              <span class="Color-White">Entrar
-             <i *ngIf='!loading' class="material-icons right">send</i>
-             </span>
-            </button>
-            <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-          </div>
-          <div class="row">
-            <a routerLink="/loginManutentor" class="row blue-text text-darken-4">Você é um Manutentor?</a>
-            </div>
-            <div class="row">
-              <div class="col offset-m3 m3 s4">
-                  <span class="Color-PrussianBlue">Não é cadastrado? </span>
-              </div>   
-              <div class="col m3 s3">
-              <button id="cadastrar" type="button" class="btn waves-effect waves-light Color-PrussianBlue">
-                    <span class="Color-White">Cadastre-se</span>
-              </button>
-          </div>        
-          </div>
-      </form>
+<div class="col m6 s12" align="center" width="120px">
+  <form class="col m6 s4" [formGroup]="LoginForm" (ngSubmit)="Login();" role="form">
+    <div class="row">
+      <h1 class="h1 Color-Cerulean">Manutentor</h1>
     </div>
-    <footer class="range-field">
-        <div class="footer-copyright center-align">
-          <div class="col offset-m3 m5">
-          <span>Manutentor© 2018 </span>
-          </div>
-        </div>
-      </footer>
+    <div class="row">
+      <div class="input-field col offset-m4 m6 s11">
+        <input formControlName="Email" id="email" type="text" class="col m8 validate">
+        <label for="email">Email</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col offset-m4 m6 s11">
+        <input formControlName="Password" id="password" type="password" class="col m8 validate" autocomplete="off">
+        <label for="password">Senha</label>
+      </div>
+    </div>
+    <div class="row">
+      <button id="entrar" class="btn btn-large waves-effect waves-light teal lighten-2" type="submit">
+        <span class="Color-White">Entrar
+          <i *ngIf='!loading' class="material-icons right">send</i>
+        </span>
+      </button>
+      <img *ngIf="loading" 
+      src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+      />
+    </div>
+    <div class="row">
+      <a routerLink="/loginManutentor" class="row blue-text text-darken-4">Você é um Manutentor?</a>
+    </div>
+    <div class="row">
+      <div class="col offset-m3 m3 s4">
+        <span class="Color-PrussianBlue">Não é cadastrado? </span>
+      </div>
+      <div class="col m3 s3">
+        <a routerLink="/cadastrar">
+          <button type="button" class="btn waves-effect waves-light Color-PrussianBlue">
+            <span class="Color-White">Cadastre-se</span>
+          </button>
+        </a>
+      </div>
+    </div>
+  </form>
+</div>
+<footer class="range-field">
+  <div class="footer-copyright center-align">
+    <div class="col offset-m3 m5">
+      <span>Manutentor© 2018 </span>
+    </div>
+  </div>
+</footer>
